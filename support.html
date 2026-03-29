@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — HorseCamp</title>
+  <meta name="description" content="Get help with HorseCamp — the equestrian camp and trail finder app.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --earth: #3D2B1A; --saddle: #8B5E3C; --hay: #D4A853;
+      --trail: #5C7A4E; --cream: #FAF6EE; --warm-gray: #EDE8DF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--earth); }
+
+    nav {
+      background: var(--earth);
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      border-bottom: 1px solid rgba(212,168,83,0.15);
+    }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--hay); text-decoration: none; }
+    .nav-back { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; }
+    .nav-back:hover { color: var(--hay); }
+
+    .page-header { background: var(--earth); padding: 3.5rem 5vw 3rem; }
+    .page-header p { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: white; }
+    .page-header .sub { font-size: 1rem; color: rgba(255,255,255,0.45); margin-top: 0.8rem; font-weight: 300; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 4rem 5vw; }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--earth);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .contact-card h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: white; font-weight: 600; margin-bottom: 0.4rem; }
+    .contact-card p { color: rgba(255,255,255,0.45); font-size: 0.9rem; font-weight: 300; }
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--hay);
+      color: var(--earth);
+      text-decoration: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    /* FAQ */
+    .section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--saddle); margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--earth); margin-bottom: 2rem; }
+
+    .faq-item {
+      border-bottom: 0.5px solid rgba(139,94,60,0.15);
+      padding: 1.3rem 0;
+    }
+
+    .faq-q {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--earth);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .faq-q .chevron {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--warm-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s, background 0.2s;
+      margin-top: 1px;
+    }
+
+    .faq-item.open .chevron { transform: rotate(180deg); background: var(--hay); }
+
+    .faq-a {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.8;
+      font-weight: 300;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 400px;
+      padding-top: 0.8rem;
+    }
+
+    /* Response time */
+    .response-info {
+      background: white;
+      border: 0.5px solid rgba(139,94,60,0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .ri-item { text-align: center; }
+    .ri-val { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--trail); display: block; }
+    .ri-lbl { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-top: 0.2rem; display: block; }
+
+    footer {
+      background: var(--earth);
+      padding: 2rem 5vw;
+      text-align: center;
+      border-top: 1px solid rgba(212,168,83,0.1);
+      margin-top: 4rem;
+    }
+    footer p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+    footer a { color: var(--hay); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">HorseCamp</a>
+  <a href="/" class="nav-back">← Back to home</a>
+</nav>
+
+<div class="page-header">
+  <p>Help center</p>
+  <h1>Support</h1>
+  <p class="sub">We're horse people too. We'll get back to you fast.</p>
+</div>
+
+<div class="content">
+
+  <!-- Contact card -->
+  <div class="contact-card">
+    <div>
+      <h2>Email support</h2>
+      <p>For account issues, billing questions, or anything else — we typically respond within 24 hours.</p>
+    </div>
+    <a href="mailto:support@horsecampfinder.com" class="email-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      support@horsecampfinder.com
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <p class="section-label">Common questions</p>
+  <h2 class="section-title">Frequently asked.</h2>
+
+  <div id="faq">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        How do I upload my horse's coggins certificate?
+        <span class="chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a">Go to Profile → select your horse → tap "Coggins certificate" → tap Upload. You can photograph your paper certificate directly with your phone camera — no scanner needed. We accept JPG, PNG, and PDF formats. The document will be stored securely and you'll receive an expiration reminder 60, 30, and 7 days before it expires.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        What states require a brand inspection certificate?
+        <span class="chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a">Seventeen western states currently require a brand inspection certificate when transporting horses, including Colorado, Wyoming, Montana, Idaho, Utah, Nevada, California, Oregon, Washington, New Mexico, Texas, Oklahoma, and Nebraska. Arizona requires inspection only for branded horses. HorseCamp will flag which states on your planned route require a certificate and whether your current cert covers those states. Tap "State rules" on any horse's record to see the full breakdown.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        How does the QR check-in packet work?
+        <span class="chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a">When you arrive at a camp, open HorseCamp → go to your upcoming reservation → tap "Check-in packet." This generates a QR code that camp staff can scan to instantly view all your horses' coggins, health certificates, and brand inspection documents — no paper binders needed. You can also share the packet link via email or text. Documents are shared read-only and the link expires after your stay ends.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        Can I use HorseCamp without a subscription?
+        <span class="chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a">Yes — you can search for camps, view listings, and browse the map for free. A $4.99/month (billed as $5/month) Pro subscription unlocks trip planning, offline maps, horse health record storage, coggins expiration reminders, the QR check-in packet, and wildfire/weather alerts along your route. The subscription is billed through your Apple ID or Google Play account and can be cancelled anytime.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        How do I filter camps by my rig length?
+        <span class="chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a">Set up your rig once in Profile → My Rig. Enter your trailer type (bumper pull, gooseneck, or living quarters) and your total rig length including truck. From then on, every camp search automatically filters to sites that can accommodate your rig. You can also adjust rig length temporarily in the filter panel on the search and map screens without changing your profile — useful if you're comparing sites for a different setup.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        How do I list my camp, vet practice, or farrier business?
+        <span class="chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a">Listings for equestrian camps, large animal vets, and farriers are $5/month. Email us at hello@horsecampfinder.com with your business name, location, and contact information and we'll set up your verified listing. Camp listings include a verified badge, photo gallery, seasonal calendar control, and priority placement in search results. Vet and farrier listings include your service area, specialties, and a direct contact button for riders.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        How do I report incorrect camp information?
+        <span class="chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a">On any camp listing, tap the three-dot menu (⋯) in the top right and select "Report an issue." You can flag incorrect hookup information, closed stalls, wrong seasonal dates, or any other inaccuracy. Our team reviews all reports within 48 hours. You can also leave a detailed review after your stay — notes like "30A pedestal on sites 4–6 is not working" help the whole community.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        How do I cancel my subscription?
+        <span class="chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a">On iPhone: Settings → your Apple ID → Subscriptions → HorseCamp → Cancel. On Android: Google Play app → Profile icon → Payments & subscriptions → Subscriptions → HorseCamp → Cancel. You'll retain Pro access until the end of your current billing period. We don't offer refunds for partial months, but you're never charged twice and there are no cancellation fees.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        Is my horse's health data secure?
+        <span class="chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a">Yes. Documents you upload (coggins, health certs, brand inspection, vaccines) are stored encrypted both in transit and at rest. Only you can access them — unless you explicitly share them via the QR check-in packet. We do not sell, share, or use your horse health data for advertising. You can delete any document or your entire account at any time. See our full Privacy Policy for details.</div>
+    </div>
+
+  </div>
+
+  <!-- Response time info -->
+  <div class="response-info">
+    <div class="ri-item">
+      <span class="ri-val">&lt; 24h</span>
+      <span class="ri-lbl">Email response</span>
+    </div>
+    <div class="ri-item">
+      <span class="ri-val">48h</span>
+      <span class="ri-lbl">Camp report review</span>
+    </div>
+    <div class="ri-item">
+      <span class="ri-val">7 days</span>
+      <span class="ri-lbl">Feature requests reviewed</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 HorseCamp &nbsp;·&nbsp; <a href="/">Home</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="mailto:support@horsecampfinder.com">support@horsecampfinder.com</a></p>
+</footer>
+
+<script>
+  function toggle(el) {
+    const item = el.parentElement;
+    item.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
