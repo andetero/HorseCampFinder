@@ -395,163 +395,6 @@
       font-weight: 300;
     }
 
-    /* ── PRICING ── */
-    .pricing {
-      padding: 6rem 5vw;
-      background: var(--warm-gray);
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      max-width: 900px;
-    }
-
-    .pricing-card {
-      background: white;
-      border: 0.5px solid rgba(139,94,60,0.18);
-      border-radius: 16px;
-      padding: 2rem 1.8rem;
-      transition: transform 0.2s;
-    }
-
-    .pricing-card:hover { transform: translateY(-3px); }
-    .pricing-card.featured { background: var(--earth); border-color: var(--earth); }
-
-    .pricing-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.2rem;
-    }
-
-    .pricing-who {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-
-    .featured .pricing-who { color: rgba(255,255,255,0.4); }
-    .pricing-who { color: var(--saddle); }
-
-    .pricing-amount {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--earth);
-      margin-bottom: 0.2rem;
-    }
-
-    .featured .pricing-amount { color: var(--hay); }
-
-    .pricing-period {
-      font-size: 0.85rem;
-      color: #888;
-      margin-bottom: 1.2rem;
-    }
-
-    .featured .pricing-period { color: rgba(255,255,255,0.35); }
-
-    .pricing-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .pricing-features li {
-      font-size: 0.85rem;
-      color: var(--saddle);
-      font-weight: 300;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      line-height: 1.5;
-    }
-
-    .featured .pricing-features li { color: rgba(255,255,255,0.55); }
-
-    .pricing-features li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--trail);
-      flex-shrink: 0;
-      margin-top: 0.45rem;
-    }
-
-    .featured .pricing-features li::before { background: var(--hay); }
-
-    /* ── TESTIMONIALS ── */
-    .testimonials {
-      padding: 6rem 5vw;
-      background: var(--cream);
-    }
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .testimonial {
-      background: white;
-      border: 0.5px solid rgba(139,94,60,0.12);
-      border-radius: 14px;
-      padding: 1.8rem;
-    }
-
-    .testimonial-quote {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--earth);
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .author-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-
-    .author-name {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--earth);
-      display: block;
-    }
-
-    .author-detail {
-      font-size: 0.75rem;
-      color: #999;
-      display: block;
-      margin-top: 1px;
-    }
-
-    .star-row { color: var(--hay); font-size: 0.75rem; margin-bottom: 0.8rem; }
-
     /* ── FINAL CTA ── */
     .final-cta {
       background: var(--earth-deep);
@@ -662,7 +505,7 @@
   <a href="/" class="nav-brand">HorseCamp</a>
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#how">How it works</a></li>
     <li><a href="support.html">Support</a></li>
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="#download" class="nav-cta">Download</a></li>
@@ -688,25 +531,8 @@
       <polygon points="0,280 120,140 240,200 380,80 520,160 660,60 800,140 940,40 1080,120 1200,70 1340,150 1440,100 1440,280" fill="#2A1D10"/>
       <polygon points="0,280 80,180 200,230 320,140 440,200 560,100 700,180 840,90 980,160 1100,110 1240,180 1360,130 1440,160 1440,280" fill="#1A0F07"/>
     </svg>
-    <!-- Trailer silhouette bottom right -->
-    <svg style="position:absolute;bottom:2rem;right:4vw;opacity:0.12;" width="220" height="80" viewBox="0 0 220 80" fill="#C49A6C">
-      <rect x="60" y="20" width="140" height="40" rx="4"/>
-      <rect x="20" y="28" width="50" height="24" rx="3"/>
-      <rect x="0" y="36" width="24" height="10" rx="2"/>
-      <circle cx="30" cy="65" r="10" fill="#2A1D10"/>
-      <circle cx="30" cy="65" r="5" fill="#C49A6C"/>
-      <circle cx="90" cy="65" r="10" fill="#2A1D10"/>
-      <circle cx="90" cy="65" r="5" fill="#C49A6C"/>
-      <circle cx="160" cy="65" r="10" fill="#2A1D10"/>
-      <circle cx="160" cy="65" r="5" fill="#C49A6C"/>
-      <circle cx="200" cy="65" r="10" fill="#2A1D10"/>
-      <circle cx="200" cy="65" r="5" fill="#C49A6C"/>
-      <line x1="68" y1="20" x2="68" y2="60" stroke="#2A1D10" stroke-width="2"/>
-      <line x1="100" y1="20" x2="100" y2="60" stroke="#2A1D10" stroke-width="2"/>
-      <line x1="132" y1="20" x2="132" y2="60" stroke="#2A1D10" stroke-width="2"/>
-      <line x1="164" y1="20" x2="164" y2="60" stroke="#2A1D10" stroke-width="2"/>
-      <line x1="196" y1="20" x2="196" y2="60" stroke="#2A1D10" stroke-width="2"/>
-    </svg>
+
+    
   </div>
 
   <div class="hero-content">
@@ -731,12 +557,12 @@
       <span class="hero-stat-lbl">States covered</span>
     </div>
     <div>
-      <span class="hero-stat-num">$5</span>
-      <span class="hero-stat-lbl">Per month</span>
-    </div>
-    <div>
       <span class="hero-stat-num">3</span>
       <span class="hero-stat-lbl">Horse docs stored</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">Free</span>
+      <span class="hero-stat-lbl">To download</span>
     </div>
   </div>
 </section>
@@ -831,114 +657,10 @@
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <p class="section-label">Simple pricing</p>
-  <h2 class="section-title">One price.<br>For everyone.</h2>
-
-  <div class="pricing-grid">
-    <div class="pricing-card featured">
-      <div class="pricing-icon" style="background:rgba(92,122,78,0.25);">
-        <svg width="20" height="18" viewBox="0 0 20 18" fill="none"><ellipse cx="7" cy="13" rx="6" ry="3.5" fill="#8FAE7F" opacity="0.5"/><ellipse cx="12" cy="8.5" rx="5" ry="4.5" fill="#8FAE7F" opacity="0.65"/><ellipse cx="16" cy="4" rx="3.5" ry="4" fill="#8FAE7F" opacity="0.8"/><rect x="4" y="15.5" width="2.5" height="2.5" rx="1.2" fill="#5C7A4E"/><rect x="8" y="16" width="2.5" height="2" rx="1.2" fill="#5C7A4E"/><rect x="13" y="15.5" width="2.5" height="2.5" rx="1.2" fill="#5C7A4E"/></svg>
-      </div>
-      <p class="pricing-who">Riders</p>
-      <div class="pricing-amount">$5</div>
-      <p class="pricing-period">per month · $60/year</p>
-      <ul class="pricing-features">
-        <li>Unlimited camp search & filters</li>
-        <li>Multi-stop trip planning</li>
-        <li>Horse health records vault</li>
-        <li>QR check-in packet</li>
-        <li>Wildfire & weather alerts</li>
-        <li>Offline maps</li>
-        <li>Coggins expiration reminders</li>
-      </ul>
-    </div>
-
-    <div class="pricing-card">
-      <div class="pricing-icon" style="background:#EAF3DE;">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="8" width="16" height="10" rx="2.5" stroke="#5C7A4E" stroke-width="1.3"/><rect x="7" y="3" width="6" height="8" rx="1.5" stroke="#5C7A4E" stroke-width="1.3"/><rect x="8" y="14" width="4" height="4" rx="1" fill="#5C7A4E"/></svg>
-      </div>
-      <p class="pricing-who">Equestrian camps</p>
-      <div class="pricing-amount" style="color:var(--earth);">$5</div>
-      <p class="pricing-period" style="color:#999;">per month · $60/year</p>
-      <ul class="pricing-features">
-        <li>Verified camp badge</li>
-        <li>Photo gallery listing</li>
-        <li>Seasonal calendar control</li>
-        <li>Direct rider inquiries</li>
-        <li>Priority search placement</li>
-        <li>Hookup & stall detail editor</li>
-      </ul>
-    </div>
-
-    <div class="pricing-card">
-      <div class="pricing-icon" style="background:#EEEDFE;">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4.5" stroke="#534AB7" stroke-width="1.3"/><path d="M3 18c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#534AB7" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-      </div>
-      <p class="pricing-who">Vets & farriers</p>
-      <div class="pricing-amount" style="color:var(--earth);">$5</div>
-      <p class="pricing-period" style="color:#999;">per month · $60/year</p>
-      <ul class="pricing-features">
-        <li>Directory listing</li>
-        <li>Service area map</li>
-        <li>Specialties & availability</li>
-        <li>Direct rider contact</li>
-        <li>Emergency clinic badge</li>
-        <li>On-route discovery</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <p class="section-label">From the community</p>
-  <h2 class="section-title">What haulers are saying.</h2>
-
-  <div class="testimonial-grid">
-    <div class="testimonial">
-      <div class="star-row">★★★★★</div>
-      <p class="testimonial-quote">"Finally found a camp with actual covered stalls and 50-amp — 3 miles off the interstate in Kansas. Would never have known it existed without HorseCamp."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar" style="background:#EAF3DE;color:#27500A;">JT</div>
-        <div>
-          <span class="author-name">Jan T.</span>
-          <span class="author-detail">Texas · Gooseneck · 3 horses</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial">
-      <div class="star-row">★★★★★</div>
-      <p class="testimonial-quote">"The coggins reminder saved me. I was 2 weeks from expiration heading into Colorado and would have had no idea. Booked the vet right from the app."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar" style="background:#EEEDFE;color:#3C3489;">MR</div>
-        <div>
-          <span class="author-name">M. Rivera</span>
-          <span class="author-detail">Arizona · Bumper pull · 2 horses</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial">
-      <div class="star-row">★★★★★</div>
-      <p class="testimonial-quote">"Planned a 28-night Colorado to Georgia trip. The app flagged one camp as closed in May and rerouted me automatically. That alone was worth a year of subscription."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar" style="background:#FFF8E1;color:#7A5A1A;">KC</div>
-        <div>
-          <span class="author-name">K. Collins</span>
-          <span class="author-detail">Montana · Living quarters · 4 horses</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section class="final-cta" id="download">
   <h2 class="final-cta-title">Ready to ride farther?</h2>
-  <p class="final-cta-sub">Download HorseCamp. $5 a month. No surprises.</p>
+  <p class="final-cta-sub">Download HorseCamp free. Built for horse people.</p>
   <div class="app-badges">
     <a href="#" class="app-badge">
       <svg width="22" height="27" viewBox="0 0 22 27" fill="none"><path d="M17.5 14.2c0-3.4 2.8-5.1 2.9-5.2-1.6-2.3-4-2.6-4.9-2.7-2.1-.2-4 1.2-5.1 1.2s-2.7-1.2-4.4-1.2C3.8 6.3 1.2 7.9.1 10.5c-2.3 3.9-.6 9.8 1.6 13C2.8 25 3.9 27 5.6 27c1.6-.1 2.2-1 4.2-1s2.5 1 4.2 1c1.7 0 2.8-1.6 3.9-3.2.7-1.1 1.2-2.3 1.6-3.2-.1-.1-3.1-1.2-3.1-4.6z" fill="#D4A853"/><path d="M14.5 4.4C15.5 3.1 16.3 1.4 16 0c-1.5.1-3.2 1-4.3 2.2-.9 1.1-1.8 2.8-1.6 4.4 1.6.1 3.3-.7 4.4-2.2z" fill="#D4A853"/></svg>
@@ -962,13 +684,9 @@
   <div class="footer-brand">HorseCamp</div>
   <ul class="footer-links">
     <li><a href="#features">Features</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#how">How it works</a></li>
     <li><a href="privacy.html">Privacy Policy</a></li>
     <li><a href="support.html">Support</a></li>
-    <li><a href="mailto:support@horsecampfinder.com">Contact</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#e794929797889593a78f8895948284868a97818e89838295c984888a">Contact</a></li>
   </ul>
-  <p class="footer-copy">© 2025 HorseCamp · HorseCampFinder.com · Built for horse people, by horse people.</p>
-</footer>
-
-</body>
-</html>
+  <p class="footer-copy">© 2025 HorseCamp · HorseCampFinder.com · Built for horse people
