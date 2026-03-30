@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HorseCamp Check-In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --earth: #3D2B1A; --hay: #D4A853; --trail: #5C7A4E; --cream: #FAF6EE; --saddle: #8B5E3C; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--earth); }
+    nav { background: var(--earth); padding: 1rem 5vw; display: flex; align-items: center; gap: 12px; }
+    nav .logo { font-family: 'Playfair Display', serif; color: var(--hay); font-size: 1.2rem; }
+    nav .badge { background: var(--trail); color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px; }
+    .hero { background: var(--earth); padding: 2rem 5vw; border-bottom: 1px solid rgba(212,168,83,0.2); }
+    .hero h1 { font-family: 'Playfair Display', serif; color: var(--hay); font-size: 1.8rem; }
+    .hero p { color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 4px; }
+    main { max-width: 640px; margin: 0 auto; padding: 2rem 5vw; }
+    .horse-card {
+      background: white; border-radius: 16px; padding: 20px;
+      margin-bottom: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .horse-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .horse-name { font-size: 1.1rem; font-weight: 600; }
+    .horse-sub { font-size: 0.8rem; color: #888; margin-top: 2px; }
+    .status-badge { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 8px; }
+    .status-ok { background: #E0F2D8; color: #27500A; }
+    .status-warn { background: #FFE8E8; color: #8B0000; }
+    .doc-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+    .doc-row:last-child { border-bottom: none; }
+    .doc-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-green { background: var(--trail); }
+    .dot-red { background: #E53E3E; }
+    .dot-yellow { background: #D4A853; }
+    .doc-type { font-size: 0.9rem; flex: 1; }
+    .doc-status { font-size: 0.75rem; font-weight: 600; }
+    .doc-expires { font-size: 0.75rem; color: #888; }
+    .doc-cert { font-size: 0.72rem; color: #aaa; margin-top: 1px; }
+    .generated { text-align: center; font-size: 0.75rem; color: #aaa; margin-top: 24px; }
+    .no-data { text-align: center; padding: 40px; }
+    .no-data h2 { color: var(--earth); margin-bottom: 8px; }
+    .no-data p { color: #888; font-size: 0.9rem; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #1C1208; color: #FAF6EE; }
+      .horse-card { background: #2C1E10; border-color: rgba(255,255,255,0.08); }
+      .doc-row { border-color: rgba(255,255,255,0.08); }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <span class="logo">🐴 HorseCamp</span>
+  <span class="badge">CHECK-IN</span>
+</nav>
+<div class="hero">
+  <h1>Horse Health Verification</h1>
+  <p id="generated-time">Scanned check-in packet</p>
+</div>
+<main id="content">
+  <div class="no-data">
+    <h2>Loading...</h2>
+    <p>Reading check-in data</p>
+  </div>
+</main>
+
+<script>
+  function getStatusDot(status) {
+    if (!status) return 'dot-yellow';
+    const s = status.toLowerCase();
+    if (s.includes('current') || s.includes('valid')) return 'dot-green';
+    if (s.includes('expir') || s.includes('warn')) return 'dot-yellow';
+    return 'dot-red';
+  }
+
+  function render(horses) {
+    const main = document.getElementById('content');
+    if (!horses || horses.length === 0) {
+      main.innerHTML = '<div class="no-data"><h2>No horse data found</h2><p>This QR code may be invalid or expired.</p></div>';
+      return;
+    }
+
+    let html = '';
+    for (const horse of horses) {
+      const allOk = horse.allCurrent;
+      html += `
+        <div class="horse-card">
+          <div class="horse-header">
+            <div>
+              <div class="horse-name">${horse.name}</div>
+              <div class="horse-sub">${horse.color || ''} ${horse.sex || ''} · ${horse.breed || ''}</div>
+            </div>
+            <span class="status-badge ${allOk ? 'status-ok' : 'status-warn'}">
+              ${allOk ? '✓ All Current' : '⚠ Needs Attention'}
+            </span>
+          </div>`;
+
+      if (!horse.docs || horse.docs.length === 0) {
+        html += `<p style="color:#aaa;font-size:0.85rem">No documents on file</p>`;
+      } else {
+        for (const doc of horse.docs) {
+          html += `
+            <div class="doc-row">
+              <div class="doc-dot ${getStatusDot(doc.status)}"></div>
+              <div style="flex:1">
+                <div class="doc-type">${doc.type}</div>
+                ${doc.cert ? `<div class="doc-cert">Cert #${doc.cert}${doc.vet ? ' · ' + doc.vet : ''}</div>` : ''}
+              </div>
+              <div style="text-align:right">
+                <div class="doc-status" style="color:${doc.status?.toLowerCase().includes('current') ? '#27500A' : '#E53E3E'}">${doc.status}</div>
+                <div class="doc-expires">${doc.expires || ''}</div>
+              </div>
+            </div>`;
+        }
+      }
+      html += `</div>`;
+    }
+
+    if (horses[0]?.generated) {
+      document.getElementById('generated-time').textContent = 'Generated ' + horses[0].generated;
+    }
+
+    main.innerHTML = html;
+  }
+
+  // Parse the ?d= query parameter
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const d = params.get('d');
+    if (d) {
+      const data = JSON.parse(decodeURIComponent(d));
+      render(data);
+    } else {
+      document.getElementById('content').innerHTML =
+        '<div class="no-data"><h2>No data found</h2><p>Scan a valid HorseCamp check-in QR code to view horse health documents.</p></div>';
+    }
+  } catch(e) {
+    document.getElementById('content').innerHTML =
+      '<div class="no-data"><h2>Could not read QR data</h2><p>The QR code may be corrupted. Try generating a new one in the HorseCamp app.</p></div>';
+  }
+</script>
+</body>
+</html>
