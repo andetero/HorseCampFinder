@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-30T05:22:55.995420+00:00",
-  "count": 1612,
+  "generated": "2026-03-30T14:13:28.682721+00:00",
+  "count": 1648,
   "sources": [
     "Recreation.gov RIDB",
     "NPS API"
@@ -969,6 +969,43 @@
       "source": "RIDB"
     },
     {
+      "id": "google-ChIJFXkEcQJzjIgRO6-Y6_pBoPo",
+      "name": "Wind Creek State Park Equestrian Campground",
+      "location": "Alexander City, AL",
+      "state": "AL",
+      "latitude": 32.8577305,
+      "longitude": -85.927414,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://www.alapark.com/parks/wind-creek-state-park/horse-camping-areaday-riding",
+      "description": "Equestrian facility in Alexander City, AL. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.8,
+      "reviewCount": 55,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-245070",
       "name": "Poteau/Cold Springs Ranger District",
       "location": "AR",
@@ -1596,6 +1633,43 @@
         "5C7A4E"
       ],
       "source": "NPS"
+    },
+    {
+      "id": "google-ChIJpTE3c-f41IcR1HC--sXk_04",
+      "name": "Equestrian Camp",
+      "location": "Wynne, AR",
+      "state": "AR",
+      "latitude": 35.1766731,
+      "longitude": -90.697442,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=5692519992986071252",
+      "description": "Equestrian facility in Wynne, AR. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.1,
+      "reviewCount": 9,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     },
     {
       "id": "ridb-251846",
@@ -13451,6 +13525,80 @@
       "source": "NPS"
     },
     {
+      "id": "google-ChIJs1SdHEh2wIARXSRCMSZVNCY",
+      "name": "Horseshoe Meadow Equestrian Camp",
+      "location": "Lone Pine, CA",
+      "state": "CA",
+      "latitude": 36.45221799999999,
+      "longitude": -118.169911,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(760) 876-6200",
+      "website": "http://www.fs.usda.gov/recarea/inyo/recreation/camping-cabins/recarea/?recid=20696&actid=29",
+      "description": "Equestrian facility in Lone Pine, CA. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.4,
+      "reviewCount": 16,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJl47yuSBHmoARTNMEzIsHexY",
+      "name": "Black Oak Equestrian Camp",
+      "location": "Pacific House, CA",
+      "state": "CA",
+      "latitude": 38.7181672,
+      "longitude": -120.5728379,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=1619896787974542156",
+      "description": "Equestrian facility in Pacific House, CA. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.7,
+      "reviewCount": 3,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-259437",
       "name": "SW/Central Flat Tops Area",
       "location": "CO",
@@ -17237,6 +17385,43 @@
       "source": "NPS"
     },
     {
+      "id": "google-ChIJS0t5vKp8PocRSm3GsXJlwgg",
+      "name": "Palisades Horse Campground",
+      "location": "Pagosa Springs, CO",
+      "state": "CO",
+      "latitude": 37.54029939999999,
+      "longitude": -107.1987074,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(970) 247-4874",
+      "website": "http://www.fs.usda.gov/recarea/sanjuan/recreation/camping-cabins/recarea/?recid=44036&actid=30",
+      "description": "Equestrian facility in Pagosa Springs, CO. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.9,
+      "reviewCount": 8,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-233330",
       "name": "HOP BROOK LAKE RECREATION AREA",
       "location": "Middlebury, CT",
@@ -18389,6 +18574,43 @@
         "D4A853"
       ],
       "source": "RIDB"
+    },
+    {
+      "id": "google-ChIJA6Lp2W33lIcRt4BVWwd5lyc",
+      "name": "Waubonsie St Park Equestrian Campground",
+      "location": "Sidney, IA",
+      "state": "IA",
+      "latitude": 40.68280379999999,
+      "longitude": -95.67876559999999,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://iowastateparks.reserveamerica.com/camping/waubonsie-state-park/r/campgroundDetails.do?contractCode=IA&parkId=610131",
+      "description": "Equestrian facility in Sidney, IA. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 5.0,
+      "reviewCount": 1,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     },
     {
       "id": "ridb-251899",
@@ -22960,6 +23182,154 @@
       "source": "RIDB"
     },
     {
+      "id": "google-ChIJn-z98WTZDYgRY3V_ec43t6E",
+      "name": "Equestrian Campground",
+      "location": "Kankakee, IL",
+      "state": "IL",
+      "latitude": 41.2031298,
+      "longitude": -88.0075979,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=11652843920785634659",
+      "description": "Equestrian facility in Kankakee, IL. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.1,
+      "reviewCount": 10,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJYahoZCqaCogRlf-eaXFS6VQ",
+      "name": "Sand Ridge Horse Campground",
+      "location": "Topeka, IL",
+      "state": "IL",
+      "latitude": 40.3912683,
+      "longitude": -89.885243,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=6118512215816339349",
+      "description": "Equestrian facility in Topeka, IL. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.7,
+      "reviewCount": 3,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJLcNGOZtFDYgRf3F9hHjSDto",
+      "name": "Middle Fork horse equestrian campground D",
+      "location": "Newtown, IL",
+      "state": "IL",
+      "latitude": 40.1971954,
+      "longitude": -87.74478859999999,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=15712727565002961279",
+      "description": "Equestrian facility in Newtown, IL. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 5.0,
+      "reviewCount": 1,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJQaBjAwDd44cRU93rNaE99z0",
+      "name": "Horse Corral Campground",
+      "location": "Illinois City, IL",
+      "state": "IL",
+      "latitude": 41.4225865,
+      "longitude": -90.8343235,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=4465105318164815187",
+      "description": "Equestrian facility in Illinois City, IL. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 5.0,
+      "reviewCount": 2,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-273756",
       "name": "OVERLOOK SHELTER (BROOKVILLE LAKE)",
       "location": "Brookville , IN",
@@ -26264,6 +26634,80 @@
       "source": "RIDB"
     },
     {
+      "id": "google-ChIJR_FL5d9II4gRTP0gThXj2So",
+      "name": "Equestrian Campground",
+      "location": "Howell, MI",
+      "state": "MI",
+      "latitude": 42.5102749,
+      "longitude": -83.8630822,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=3087748700183788876",
+      "description": "Equestrian facility in Howell, MI. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 5.0,
+      "reviewCount": 1,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJ71wpATvSPIgRvalxJDKhQL4",
+      "name": "Waterloo Equestrian Campground",
+      "location": "Chelsea, MI",
+      "state": "MI",
+      "latitude": 42.3345689,
+      "longitude": -84.1300136,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=13709134502447655357",
+      "description": "Equestrian facility in Chelsea, MI. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.6,
+      "reviewCount": 7,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-231997",
       "name": "DEER LAKE",
       "location": "DEER RIVER, MN",
@@ -26633,6 +27077,154 @@
         "D4A853"
       ],
       "source": "RIDB"
+    },
+    {
+      "id": "google-ChIJtR9vXdOJslIRHMBcfKD6CRE",
+      "name": "Wild River State Park Equestrian Campground",
+      "location": "Almelund, MN",
+      "state": "MN",
+      "latitude": 45.5273464,
+      "longitude": -92.7464127,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://www.dnr.state.mn.us/state_parks/park.html?id=spk00254#overnight_facilities",
+      "description": "Equestrian facility in Almelund, MN. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.7,
+      "reviewCount": 6,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJ3Zc2Ss0Z-ocRLZe0EiuenKM",
+      "name": "Forestville State Park Equestrian Campground",
+      "location": "Preston, MN",
+      "state": "MN",
+      "latitude": 43.6336312,
+      "longitude": -92.2259582,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(507) 352-5111",
+      "website": "https://www.dnr.state.mn.us/state_parks/park.html?id=spk00148",
+      "description": "Equestrian facility in Preston, MN. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.9,
+      "reviewCount": 12,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJ3wc8E1UJslIR-lz1QqKtYQY",
+      "name": "Equestrian Campground",
+      "location": "Hinckley, MN",
+      "state": "MN",
+      "latitude": 45.9596174,
+      "longitude": -92.605755,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=459839549388184826",
+      "description": "Equestrian facility in Hinckley, MN. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 5.0,
+      "reviewCount": 2,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJ6_13MERltVIRDwfXV57K4iU",
+      "name": "Equestrian Campground",
+      "location": "New London, MN",
+      "state": "MN",
+      "latitude": 45.324075,
+      "longitude": -95.04643209999999,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=2729967105567295247",
+      "description": "Equestrian facility in New London, MN. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 5.0,
+      "reviewCount": 1,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     },
     {
       "id": "ridb-248121",
@@ -33747,6 +34339,43 @@
       "source": "NPS"
     },
     {
+      "id": "google-ChIJGUcjdniVYFMRE7IMFJh45og",
+      "name": "Horse corral",
+      "location": "St Regis, MT",
+      "state": "MT",
+      "latitude": 47.3883251,
+      "longitude": -115.4012607,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=9864704628368388627",
+      "description": "Equestrian facility in St Regis, MT. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.8,
+      "reviewCount": 4,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-232483",
       "name": "ROUND BOTTOM HORSE CAMP",
       "location": "Cherokee, NC",
@@ -35050,6 +35679,43 @@
       "source": "RIDB"
     },
     {
+      "id": "google-ChIJ3VCbo54sV4gRf2W_pX3fXZo",
+      "name": "South Mountain Equestrian Campground",
+      "location": "Connelly Springs, NC",
+      "state": "NC",
+      "latitude": 35.5956971,
+      "longitude": -81.60804159999999,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(828) 433-4772",
+      "website": "http://www.ncparks.gov/",
+      "description": "Equestrian facility in Connelly Springs, NC. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.8,
+      "reviewCount": 18,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "nps-A2C6CBD3-2490-40A8-853F-808EFD9C8B0D",
       "name": "Roundup Group Horse Camp",
       "location": "ND",
@@ -35159,6 +35825,43 @@
         "D4A853"
       ],
       "source": "RIDB"
+    },
+    {
+      "id": "google-ChIJK5wbSuzElocRs8K_OiPFSA4",
+      "name": "Pawnee Lake Horse Corrals",
+      "location": "Lincoln, NE",
+      "state": "NE",
+      "latitude": 40.858006,
+      "longitude": -96.8903977,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=1029289269954331315",
+      "description": "Equestrian facility in Lincoln, NE. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.3,
+      "reviewCount": 18,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     },
     {
       "id": "ridb-239334",
@@ -39019,6 +39722,43 @@
         "D4A853"
       ],
       "source": "RIDB"
+    },
+    {
+      "id": "google-ChIJA46vv4XqyocR_ZHw5yCMgmA",
+      "name": "Cedar Lake Equestrian Campground",
+      "location": "Hodgen, OK",
+      "state": "OK",
+      "latitude": 34.7743875,
+      "longitude": -94.7012444,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(580) 494-6402",
+      "website": "https://www.fs.usda.gov/recarea/ouachita/recarea/?recid=10747",
+      "description": "Equestrian facility in Hodgen, OK. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.5,
+      "reviewCount": 64,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     },
     {
       "id": "ridb-234991",
@@ -43898,6 +44638,228 @@
       "source": "RIDB"
     },
     {
+      "id": "google-ChIJu1dbSdqruFQRWVL7Mek9Zas",
+      "name": "Quinn Meadow Horse Camp",
+      "location": "Bend, OR",
+      "state": "OR",
+      "latitude": 43.9975423,
+      "longitude": -121.7868014,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(541) 383-5300",
+      "website": "http://www.fs.usda.gov/recarea/deschutes/recarea/?recid=38956",
+      "description": "Equestrian facility in Bend, OR. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.5,
+      "reviewCount": 26,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJ1cVjfG9Iv1QR5JMAsXo9_P8",
+      "name": "Whispering Pine Horse Camp",
+      "location": "Sisters, OR",
+      "state": "OR",
+      "latitude": 44.2530718,
+      "longitude": -121.6909433,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(541) 383-5300",
+      "website": "http://www.fs.usda.gov/",
+      "description": "Equestrian facility in Sisters, OR. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.6,
+      "reviewCount": 19,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJlX9KqNyQv1QRWTDmHuEMZIE",
+      "name": "Santiam horse camp",
+      "location": "Gates, OR",
+      "state": "OR",
+      "latitude": 44.7300164,
+      "longitude": -122.4024009,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(503) 859-2151",
+      "website": "https://www.reserveamerica.com/explore/santiam-horse-camp/OR/411802/overview",
+      "description": "Equestrian facility in Gates, OR. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.6,
+      "reviewCount": 27,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJGSINLmRtv1QRnMbdbkMOjJw",
+      "name": "Big Meadows Horse Camp",
+      "location": "Sisters, OR",
+      "state": "OR",
+      "latitude": 44.4944675,
+      "longitude": -121.9832453,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(541) 225-6300",
+      "website": "http://www.fs.usda.gov/recarea/willamette/recarea/?recid=4234",
+      "description": "Equestrian facility in Sisters, OR. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.8,
+      "reviewCount": 13,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJsRtFO6cQv1QRfO00ZvkOSng",
+      "name": "Sheep Springs Horse Camp",
+      "location": "Camp Sherman, OR",
+      "state": "OR",
+      "latitude": 44.5228628,
+      "longitude": -121.6984276,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=8667756897152331132",
+      "description": "Equestrian facility in Camp Sherman, OR. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.8,
+      "reviewCount": 9,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJnVhpNX0Px1QRBkPb96yxHD4",
+      "name": "Whitefish Horse Camp",
+      "location": "Crescent, OR",
+      "state": "OR",
+      "latitude": 43.47314979999999,
+      "longitude": -122.0322489,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(541) 338-7869",
+      "website": "http://www.fs.usda.gov/recarea/deschutes/recreation/horseriding-camping/recarea/?recid=39126&actid=30",
+      "description": "Equestrian facility in Crescent, OR. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.4,
+      "reviewCount": 29,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-251955",
       "name": "Shenango Lake Shenango Lakeside Picnic Shelter",
       "location": "Transfer, PA",
@@ -45305,6 +46267,117 @@
       "source": "RIDB"
     },
     {
+      "id": "google-ChIJVUHh3YDTYocRK_ga1pj9R9o",
+      "name": "TC Horse Camp",
+      "location": "Custer, SD",
+      "state": "SD",
+      "latitude": 43.6740079,
+      "longitude": -103.6237105,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(605) 673-3249",
+      "website": "https://tcranchhorsecamp.net/",
+      "description": "Equestrian facility in Custer, SD. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 5.0,
+      "reviewCount": 12,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJPbOW8PXTYocRE5DhSI9UYvI",
+      "name": "Aspen Meadows Ranch Horsecamp",
+      "location": "Custer, SD",
+      "state": "SD",
+      "latitude": 43.669601,
+      "longitude": -103.6355619,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(304) 588-7344",
+      "website": "http://aspenmeadowsranchhc.com/",
+      "description": "Equestrian facility in Custer, SD. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 5.0,
+      "reviewCount": 3,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJNVhB_UYtfYcRk7l_NXcrf-E",
+      "name": "French Creek Horse Camp",
+      "location": "Custer, SD",
+      "state": "SD",
+      "latitude": 43.7166041,
+      "longitude": -103.4538319,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(800) 710-2267",
+      "website": "https://gfp.sd.gov/parks/detail/custer-state-park/",
+      "description": "Equestrian facility in Custer, SD. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.8,
+      "reviewCount": 36,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-232485",
       "name": "ANTHONY CREEK HORSE CAMP",
       "location": "Townsend, TN",
@@ -46454,6 +47527,43 @@
         "D4A853"
       ],
       "source": "RIDB"
+    },
+    {
+      "id": "google-ChIJo3Qe2O5IXogRYJFfgxjfJcY",
+      "name": "Lost Corral Horse Camp",
+      "location": "Delano, TN",
+      "state": "TN",
+      "latitude": 35.2392792,
+      "longitude": -84.5481671,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(423) 476-9700",
+      "website": "https://www.fs.usda.gov/recarea/cherokee/recarea/?recid=35120",
+      "description": "Equestrian facility in Delano, TN. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.7,
+      "reviewCount": 27,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     },
     {
       "id": "ridb-253639",
@@ -48288,6 +49398,43 @@
         "5C7A4E"
       ],
       "source": "NPS"
+    },
+    {
+      "id": "google-ChIJg97bsAI1SoYRzEylQOf2ZiY",
+      "name": "Buggy Whip Equestrian Campground",
+      "location": "Sulphur Springs, TX",
+      "state": "TX",
+      "latitude": 33.2867296,
+      "longitude": -95.6809878,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(903) 395-3100",
+      "website": "https://tpwd.texas.gov/state-parks/cooper-lake/fees-facilities/horse-sites",
+      "description": "Equestrian facility in Sulphur Springs, TX. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.6,
+      "reviewCount": 10,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     },
     {
       "id": "ridb-257029",
@@ -52632,6 +53779,43 @@
       "source": "RIDB"
     },
     {
+      "id": "google-ChIJpfkyiMZdNYcR2j_EW1QlviE",
+      "name": "Coyote Hollow Equestrian Campground",
+      "location": "Hatch, UT",
+      "state": "UT",
+      "latitude": 37.71422800000001,
+      "longitude": -112.2710013,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(435) 676-9300",
+      "website": "http://www.fs.usda.gov/recarea/dixie/recreation/horseriding-camping/recarea/?recid=24950&actid=30",
+      "description": "Equestrian facility in Hatch, UT. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.5,
+      "reviewCount": 10,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-232180",
       "name": "GRINDSTONE",
       "location": "Troutdale, VA",
@@ -56495,6 +57679,43 @@
       "source": "RIDB"
     },
     {
+      "id": "google-ChIJgwI_yDAZnlQR0UUDg6OjxB0",
+      "name": "Equestrian Campground",
+      "location": "Spokane, WA",
+      "state": "WA",
+      "latitude": 47.6887848,
+      "longitude": -117.4900599,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(509) 465-5064",
+      "website": "http://parks.state.wa.us/",
+      "description": "Equestrian facility in Spokane, WA. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.6,
+      "reviewCount": 5,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-233548",
       "name": "MAIN DAY USE",
       "location": "SPRING VALLEY, WI",
@@ -56938,6 +58159,43 @@
         "D4A853"
       ],
       "source": "RIDB"
+    },
+    {
+      "id": "google-ChIJbdb0phjp_YcRlVvbt04U8z8",
+      "name": "Campground on Equestrian Drive",
+      "location": "La Valle, WI",
+      "state": "WI",
+      "latitude": 43.5955693,
+      "longitude": -90.226013,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=4608049172054760341",
+      "description": "Equestrian facility in La Valle, WI. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.5,
+      "reviewCount": 11,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     },
     {
       "id": "ridb-234244",
@@ -59911,6 +61169,80 @@
         "5C7A4E"
       ],
       "source": "NPS"
+    },
+    {
+      "id": "google-ChIJtUkz6hO_aIcRZxlpv9dRfEQ",
+      "name": "Horse Campground",
+      "location": "Buford, WY",
+      "state": "WY",
+      "latitude": 41.2181234,
+      "longitude": -105.3863719,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=4934909278762375527",
+      "description": "Equestrian facility in Buford, WY. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.8,
+      "reviewCount": 6,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
+      "id": "google-ChIJvaK948XmMlMRKYn9GlTM2Xg",
+      "name": "Sundance Horse Camp",
+      "location": "Sundance, WY",
+      "state": "WY",
+      "latitude": 44.4430556,
+      "longitude": -104.3480556,
+      "pricePerNight": 25.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(605) 574-4402",
+      "website": "http://www.recreation.gov/camping/sundance/r/campgroundDetails.do?contractCode=NRSO&parkId=70673",
+      "description": "Equestrian facility in Sundance, WY. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 5,
+      "seasonEnd": 10,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.8,
+      "reviewCount": 28,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     }
   ]
 }
