@@ -418,6 +418,7 @@ def main():
     print(f"HorseCamp data fetch starting — {datetime.now(timezone.utc).isoformat()}")
     print(f"RIDB key present: {'Yes' if RIDB_KEY else 'NO — set RIDB_API_KEY secret'}")
     print(f"NPS key present:  {'Yes' if NPS_KEY  else 'NO — set NPS_API_KEY secret'}")
+    print(f"Google key present: {'Yes' if GOOGLE_KEY else 'NO — set GOOGLE_PLACES_KEY secret'}")
 
     all_camps = {}
     total_ridb = 0
@@ -459,9 +460,8 @@ def main():
         "camps":      camps_list,
     }
 
-    # Write to docs/ so GitHub Pages serves it
-    os.makedirs("docs", exist_ok=True)
-    with open("docs/camps.json", "w") as f:
+    # Write to camps.json/ so GitHub Pages serves it
+    with open("camps.json", "w") as f:
         json.dump(output, f, indent=2)
 
     google_count = sum(1 for c in camps_list if c.get("source") == "Google Places")
