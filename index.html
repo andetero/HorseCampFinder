@@ -496,6 +496,33 @@
       .problem-strip { display: none; }
       .hero { padding: 100px 6vw 60px; }
     }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #1C1208; color: #FAF6EE; }
+      nav { background: rgba(10,6,3,0.97); }
+      .features, .how, section { background: #1C1208; }
+      .feature-card, .step, .testimonial, .pricing-card { background: #2C1E10; border-color: rgba(212,168,83,0.1); }
+      .feature-card:hover { background: #3D2B1A; }
+      .feature-title, .step-title, h2, h3 { color: #FAF6EE; }
+      .feature-desc, .step-desc, p { color: rgba(250,246,238,0.65); }
+      .hero { background: #0A0603; }
+      .problem-strip { background: #0A0603; }
+      input, textarea { background: rgba(255,255,255,0.08); color: #FAF6EE; border-color: rgba(255,255,255,0.15); }
+      /* privacy & support specific */
+      main { color: #FAF6EE; }
+      .callout { background: #2C1E10; border-left-color: #5C7A4E; }
+      .callout p { color: rgba(250,246,238,0.8); }
+      .zero-table td { border-color: rgba(255,255,255,0.08); color: #FAF6EE; }
+      .zero-table tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+      .summary-bar { background: #0A0603; }
+      .highlight-box { background: #1A2E15; border-color: #4A6840; }
+      .highlight-box p { color: #8FAE7F; }
+      .faq-q { color: #FAF6EE; }
+      .faq-a { color: rgba(250,246,238,0.7); }
+      .faq-item { border-color: rgba(255,255,255,0.08); }
+      code { background: rgba(255,255,255,0.1); color: #D4A853; }
+      h2 { border-color: rgba(255,255,255,0.08); }
+    }
   </style>
 </head>
 <body>
@@ -555,10 +582,6 @@
     <div>
       <span class="hero-stat-num">50</span>
       <span class="hero-stat-lbl">States covered</span>
-    </div>
-    <div>
-      <span class="hero-stat-num">3</span>
-      <span class="hero-stat-lbl">Horse docs stored</span>
     </div>
     <div>
       <span class="hero-stat-num">Free</span>
@@ -669,13 +692,7 @@
         <span class="app-badge-big">App Store</span>
       </div>
     </a>
-    <a href="mailto:support@horsecampfinder.com" class="app-badge">
-      <svg width="22" height="18" viewBox="0 0 22 18" fill="none"><rect x="1" y="1" width="20" height="16" rx="3" stroke="#D4A853" stroke-width="1.5"/><path d="M1 5l10 7 10-7" stroke="#D4A853" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <div class="app-badge-text">
-        <span class="app-badge-small">Get notified at launch</span>
-        <span class="app-badge-big">Join the waitlist</span>
-      </div>
-    </a>
+
   </div>
 </section>
 

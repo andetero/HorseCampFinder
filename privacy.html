@@ -4,192 +4,163 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — HorseCamp</title>
-  <meta name="description" content="HorseCamp privacy policy — how we handle your data and your horses' health records.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --earth: #3D2B1A; --saddle: #8B5E3C; --hay: #D4A853;
-      --trail: #5C7A4E; --cream: #FAF6EE; --warm-gray: #EDE8DF;
+      --trail: #5C7A4E; --cream: #FAF6EE; --warm: #EDE8DF;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--earth); line-height: 1.8; }
-
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--earth); line-height: 1.75; }
     nav {
-      background: var(--earth);
-      padding: 0 5vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
+      background: rgba(61,43,26,0.97); backdrop-filter: blur(12px);
+      padding: 1rem 5vw; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--hay); text-decoration: none; }
+    .nav-back { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--hay); }
+    .hero {
+      background: var(--earth); padding: 4rem 5vw 3rem;
       border-bottom: 1px solid rgba(212,168,83,0.15);
     }
-    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--hay); text-decoration: none; }
-    .nav-back { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; }
-    .nav-back:hover { color: var(--hay); }
-
-    .page-header {
-      background: var(--earth);
-      padding: 3.5rem 5vw 3rem;
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); color: var(--hay); margin-bottom: 0.5rem; }
+    .updated { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 0.4rem; }
+    .summary-bar {
+      background: #1A0F07; border-left: 4px solid var(--hay);
+      padding: 1.5rem 5vw; display: flex; align-items: flex-start; gap: 1rem;
     }
-    .page-header p { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.6rem; }
-    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: white; }
-    .page-header .updated { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 0.8rem; }
-
-    .content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 4rem 5vw;
+    .summary-bar .icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .summary-bar p { color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.65; }
+    .summary-bar strong { color: var(--hay); }
+    main { max-width: 720px; margin: 0 auto; padding: 3rem 5vw 5rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--earth); margin: 2.5rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--warm); }
+    p { margin-bottom: 1rem; font-size: 0.95rem; color: #3D2B1A; }
+    ul { margin: 0.5rem 0 1rem 1.4rem; }
+    ul li { margin-bottom: 0.4rem; font-size: 0.95rem; }
+    .callout {
+      background: var(--warm); border-radius: 12px; padding: 1.2rem 1.4rem;
+      margin: 1.2rem 0; border-left: 3px solid var(--trail);
     }
+    .callout p { margin: 0; font-size: 0.9rem; }
+    .zero-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.88rem; }
+    .zero-table th { background: var(--earth); color: var(--hay); padding: 0.6rem 1rem; text-align: left; font-weight: 500; }
+    .zero-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--warm); }
+    .zero-table tr:last-child td { border-bottom: none; }
+    .badge-no  { color: #27500A; background: #E0F2D8; padding: 0.1rem 0.5rem; border-radius: 4px; font-weight: 500; font-size: 0.8rem; }
+    .badge-yes { color: #7A3A00; background: #FFF0D8; padding: 0.1rem 0.5rem; border-radius: 4px; font-weight: 500; font-size: 0.8rem; }
+    footer { background: var(--earth); padding: 2rem 5vw; text-align: center; }
+    footer p { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    footer a:hover { color: var(--hay); }
 
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--earth);
-      margin-top: 2.5rem;
-      margin-bottom: 0.8rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(139,94,60,0.12);
+    @media (prefers-color-scheme: dark) {
+      body { background: #1C1208; color: #FAF6EE; }
+      nav { background: rgba(10,6,3,0.97); }
+      .features, .how, section { background: #1C1208; }
+      .feature-card, .step, .testimonial, .pricing-card { background: #2C1E10; border-color: rgba(212,168,83,0.1); }
+      .feature-card:hover { background: #3D2B1A; }
+      .feature-title, .step-title, h2, h3 { color: #FAF6EE; }
+      .feature-desc, .step-desc, p { color: rgba(250,246,238,0.65); }
+      .hero { background: #0A0603; }
+      .problem-strip { background: #0A0603; }
+      input, textarea { background: rgba(255,255,255,0.08); color: #FAF6EE; border-color: rgba(255,255,255,0.15); }
+      /* privacy & support specific */
+      main { color: #FAF6EE; }
+      .callout { background: #2C1E10; border-left-color: #5C7A4E; }
+      .callout p { color: rgba(250,246,238,0.8); }
+      .zero-table td { border-color: rgba(255,255,255,0.08); color: #FAF6EE; }
+      .zero-table tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+      .summary-bar { background: #0A0603; }
+      .highlight-box { background: #1A2E15; border-color: #4A6840; }
+      .highlight-box p { color: #8FAE7F; }
+      .faq-q { color: #FAF6EE; }
+      .faq-a { color: rgba(250,246,238,0.7); }
+      .faq-item { border-color: rgba(255,255,255,0.08); }
+      code { background: rgba(255,255,255,0.1); color: #D4A853; }
+      h2 { border-color: rgba(255,255,255,0.08); }
     }
-
-    h2:first-of-type { margin-top: 0; }
-
-    p { font-size: 0.925rem; color: #555; margin-bottom: 1rem; font-weight: 300; }
-
-    ul { margin: 0.5rem 0 1rem 1.2rem; }
-    ul li { font-size: 0.925rem; color: #555; margin-bottom: 0.4rem; font-weight: 300; }
-
-    .highlight-box {
-      background: #EAF3DE;
-      border: 0.5px solid #97C459;
-      border-radius: 10px;
-      padding: 1.2rem 1.4rem;
-      margin: 1.5rem 0;
-    }
-    .highlight-box p { color: #27500A; font-weight: 400; margin: 0; font-size: 0.9rem; }
-
-    a { color: var(--saddle); }
-    a:hover { color: var(--earth); }
-
-    footer {
-      background: var(--earth);
-      padding: 2rem 5vw;
-      text-align: center;
-      border-top: 1px solid rgba(212,168,83,0.1);
-    }
-    footer p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
-    footer a { color: var(--hay); text-decoration: none; }
   </style>
 </head>
 <body>
 
 <nav>
   <a href="/" class="nav-brand">HorseCamp</a>
-  <a href="/" class="nav-back">← Back to home</a>
+  <a href="/" class="nav-back">← Back</a>
 </nav>
 
-<div class="page-header">
-  <p>Legal</p>
+<div class="hero">
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: March 28, 2026 &nbsp;·&nbsp; Effective: March 28, 2026</p>
+  <p class="updated">Last updated: March 30, 2026 &nbsp;·&nbsp; Effective: March 30, 2026</p>
 </div>
 
-<div class="content">
+<div class="summary-bar">
+  <div class="icon">🔒</div>
+  <p><strong>Plain English summary:</strong> HorseCamp collects no personal data. We have no servers that receive your information. Everything you enter — your name, your horses, your trips, your vet documents — stays on your iPhone and never leaves it. We don't have accounts. We don't have a backend database with your records. There is nothing to breach.</p>
+</div>
 
-  <div class="highlight-box">
-    <p>Your horses' health records, coggins certificates, and personal information are yours. We do not sell your data to third parties. Ever.</p>
+<main>
+
+  <h2>What we collect</h2>
+  <p>Nothing. HorseCamp does not collect, transmit, store, or process any personal information on any server we operate.</p>
+
+  <table class="zero-table">
+    <tr><th>Data type</th><th>Collected by HorseCamp?</th><th>Where it lives</th></tr>
+    <tr><td>Your name</td><td><span class="badge-no">No</span></td><td>Your iPhone only</td></tr>
+    <tr><td>Your location</td><td><span class="badge-no">No</span></td><td>Your iPhone only</td></tr>
+    <tr><td>Your horses</td><td><span class="badge-no">No</span></td><td>Your iPhone only</td></tr>
+    <tr><td>Vet documents (coggins, health certs)</td><td><span class="badge-no">No</span></td><td>Your iPhone only, encrypted</td></tr>
+    <tr><td>Trip plans</td><td><span class="badge-no">No</span></td><td>Your iPhone only</td></tr>
+    <tr><td>States ridden</td><td><span class="badge-no">No</span></td><td>Your iPhone only</td></tr>
+    <tr><td>Email address</td><td><span class="badge-no">No</span></td><td>We don't ask for one</td></tr>
+    <tr><td>Payment information</td><td><span class="badge-no">No</span></td><td>Not applicable</td></tr>
+    <tr><td>Usage analytics</td><td><span class="badge-no">No</span></td><td>None collected</td></tr>
+    <tr><td>Crash reports</td><td><span class="badge-yes">Apple only</span></td><td>Apple's servers, if you opted in to share with developers</td></tr>
+  </table>
+
+  <h2>What the app does connect to</h2>
+  <p>The app makes exactly two types of network requests:</p>
+  <ul>
+    <li><strong>Equestrian camp data</strong> — on launch, the app fetches a JSON file from <code>horsecampfinder.com/camps.json</code>. This is a one-way download. No information about you, your device, or your usage is included in the request beyond a standard HTTP request from an anonymous IP address. This file is updated nightly from public federal datasets (Recreation.gov and NPS).</li>
+    <li><strong>GPS location</strong> — if you grant permission, iOS provides your device's location to the app to sort camps by distance. Your location is never transmitted anywhere. It is used only on your device to calculate distances.</li>
+  </ul>
+
+  <div class="callout">
+    <p>We receive no information from either of these connections that identifies you in any way. An anonymous IP address making an HTTP GET request tells us nothing about who you are.</p>
   </div>
 
-  <h2>Who we are</h2>
-  <p>HorseCamp ("we," "us," or "our") is an equestrian travel application operated by HorseCamp, accessible at HorseCampFinder.com and through our iOS and Android mobile applications. If you have questions about this policy, contact us at <a href="/cdn-cgi/l/email-protection#01727471716e737541696e73726462606c7167686f6564732f626e6c"><span class="__cf_email__" data-cfemail="493a3c3939263b3d0921263b3a2c2a2824392f20272d2c3b672a2624">[email&#160;protected]</span></a>.</p>
-
-  <h2>Information we collect</h2>
-  <p>We collect information you provide directly to us, information we collect automatically when you use the app, and information from third-party sources.</p>
-
-  <p><strong>Information you provide:</strong></p>
+  <h2>Your horse health documents</h2>
+  <p>Coggins certificates, health certificates, brand inspection records, vaccination records, and any other documents you upload are stored exclusively in your iPhone's private app sandbox using iOS data protection encryption (<code>NSFileProtectionComplete</code>). This means:</p>
   <ul>
-    <li>Account information: name, email address, and password</li>
-    <li>Profile information: home base location, rig type and length, hookup preferences</li>
-    <li>Horse information: horse names, breeds, dates of birth, and registration numbers</li>
-    <li>Health documents: uploaded coggins certificates, health certificates (CVI), brand inspection certificates, and vaccination records (stored as images or PDFs)</li>
-    <li>Trip data: planned itineraries, saved camps, and travel dates</li>
-    <li>Reviews and submissions: camp reviews, ratings, and community-submitted camp information</li>
-    <li>Payment information: processed securely by Apple App Store or Google Play — we do not store your payment card details</li>
+    <li>The files are encrypted at rest on your device</li>
+    <li>They are never transmitted to HorseCamp or any third party</li>
+    <li>We have no access to them — not now, not ever</li>
+    <li>They are permanently deleted when you remove them in the app or uninstall HorseCamp</li>
+    <li>If you have iCloud Backup enabled, they back up to your own Apple account — not ours</li>
   </ul>
 
-  <p><strong>Information collected automatically:</strong></p>
-  <ul>
-    <li>Location data: approximate or precise location when you use the map or camp search features (only when you grant permission)</li>
-    <li>Device information: device type, operating system, and unique device identifiers</li>
-    <li>Usage data: features used, searches performed, camps viewed, and app session information</li>
-    <li>Crash reports and diagnostics</li>
-  </ul>
-
-  <h2>How we use your information</h2>
-  <ul>
-    <li>To provide, operate, and improve the HorseCamp app and services</li>
-    <li>To power camp search, filtering by rig size and hookup type, and trip planning</li>
-    <li>To send coggins expiration reminders, health certificate alerts, and trip notifications you have enabled</li>
-    <li>To surface nearby vets, farriers, and emergency equine clinics based on your location</li>
-    <li>To generate your QR check-in packet for camp arrival</li>
-    <li>To respond to your support requests and communicate with you</li>
-    <li>To detect and prevent fraud, abuse, and security incidents</li>
-    <li>To comply with legal obligations</li>
-  </ul>
-
-  <h2>Your horse health records</h2>
-  <p>Documents you upload (coggins certificates, health certificates, brand inspection records, vaccination records) are stored <strong>exclusively on your device</strong> — they are never transmitted to HorseCamp's servers or any third party.</p>
-  <ul>
-    <li>Stored in your iPhone's private app sandbox using iOS data protection encryption (<code>NSFileProtectionComplete</code>)</li>
-    <li>Never uploaded to HorseCamp's servers — we have zero access to your documents</li>
-    <li>Accessible only to you and, when you explicitly choose to share via QR code, to the party you share with</li>
-    <li>Permanently deleted from your device when you delete them in the app or uninstall HorseCamp</li>
-    <li>Optionally backed up to your own iCloud account if you have iCloud Backup enabled — this is your Apple account, not ours</li>
-  </ul>
-  <div class="highlight-box">
-    <p>We designed HorseCamp this way intentionally. Coggins certificates and veterinary health records are sensitive documents. They belong on your device, not our servers.</p>
-  </div>
-
-  <h2>Location data</h2>
-  <p>We request location permission to show camps near you and to power route planning. You can deny location permission and still use the app by searching manually. We do not share your precise location history with third parties. Location data is used only to provide the map and search features.</p>
-
-  <h2>Sharing your information</h2>
-  <p>We do not sell your personal information. We may share information with:</p>
-  <ul>
-    <li><strong>Service providers:</strong> Companies that help us operate the app (cloud hosting, analytics, crash reporting) — bound by data processing agreements</li>
-    <li><strong>Mapping services:</strong> We use Mapbox for maps — your location may be transmitted to Mapbox when you use map features, subject to <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">Mapbox's Privacy Policy</a></li>
-    <li><strong>Weather and hazard services:</strong> We use public APIs (National Weather Service, USFS) to display route alerts — no personal information is shared</li>
-    <li><strong>Law enforcement:</strong> Only if required by valid legal process</li>
-    <li><strong>Business transfers:</strong> If HorseCamp is acquired or merges with another company, your data may transfer subject to the same privacy protections</li>
-  </ul>
-
-  <h2>Data retention</h2>
-  <p>We retain your account information and horse records for as long as your account is active. If you delete your account, we delete your personal data within 30 days, except where retention is required by law. Aggregated, anonymized data (such as camp search trends) may be retained indefinitely.</p>
-
-  <h2>Your rights and choices</h2>
-  <ul>
-    <li><strong>Access:</strong> You can access and download your data from within the app</li>
-    <li><strong>Correction:</strong> You can update your profile, horse records, and documents at any time</li>
-    <li><strong>Deletion:</strong> You can delete individual documents, horse profiles, or your entire account from the app settings</li>
-    <li><strong>Notifications:</strong> You can enable or disable all push notifications from the app settings</li>
-    <li><strong>Location:</strong> You can revoke location permission at any time in your device settings</li>
-  </ul>
-  <p>California residents may have additional rights under CCPA. Virginia, Colorado, and other state residents may have rights under applicable state privacy laws. Contact us at <a href="/cdn-cgi/l/email-protection#7c0f090c0c130e083c14130e0f191f1d110c1a151218190e521f1311"><span class="__cf_email__" data-cfemail="483b3d3838273a3c0820273a3b2d2b2925382e21262c2d3a662b2725">[email&#160;protected]</span></a> to exercise your rights.</p>
+  <h2>No accounts, no sign-in</h2>
+  <p>HorseCamp has no account system. You don't create a username or password. You don't give us an email address. There is no HorseCamp server that has a record of your existence as a user.</p>
 
   <h2>Children's privacy</h2>
-  <p>HorseCamp is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.</p>
+  <p>HorseCamp does not knowingly collect information from anyone, including children under 13. Since we collect no information from anyone, COPPA does not apply.</p>
 
-  <h2>Security</h2>
-  <p>We use industry-standard security measures including encryption in transit (TLS) and at rest. However, no method of transmission over the internet is 100% secure. We encourage you to use a strong, unique password for your account.</p>
-
-  <h2>Third-party links</h2>
-  <p>The app may contain links to camp websites, vet offices, and other third-party sites. We are not responsible for the privacy practices of those sites. Please review their privacy policies separately.</p>
+  <h2>Third-party services</h2>
+  <p>HorseCamp does not use advertising networks, analytics SDKs, social login, or any other third-party data services embedded in the app. The only third-party involvement is Apple's App Store and optional Apple crash reporting, both governed by Apple's own privacy policy.</p>
 
   <h2>Changes to this policy</h2>
-  <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting a notice in the app or sending an email. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+  <p>If we ever change what data we collect — for example, if we add an account system in a future version — we will update this policy before shipping that version and the effective date at the top will reflect the change.</p>
 
-  <h2>Contact us</h2>
-  <p>If you have questions, concerns, or requests related to this Privacy Policy or your data:</p>
-  <ul>
-    <li>Email: <a href="/cdn-cgi/l/email-protection#b5c6c0c5c5dac7c1f5dddac7c6d0d6d4d8c5d3dcdbd1d0c79bd6dad8"><span class="__cf_email
+  <h2>Contact</h2>
+  <p>Questions about privacy? Email <a href="mailto:support@horsecampfinder.com">support@horsecampfinder.com</a>. We'll respond within a few days.</p>
+
+</main>
+
+<footer>
+  <p>© 2026 HorseCamp &nbsp;·&nbsp; <a href="/">Home</a> &nbsp;·&nbsp; <a href="/support.html">Support</a></p>
+</footer>
+
+</body>
+</html>
