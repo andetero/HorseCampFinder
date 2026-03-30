@@ -292,8 +292,7 @@ def main():
     }
 
     # Write to docs/ so GitHub Pages serves it
-    os.makedirs("docs", exist_ok=True)
-    with open("docs/camps.json", "w") as f:
+    with open("camps.json", "w") as f:
         json.dump(output, f, indent=2)
 
     print(f"\nDone. {len(camps_list)} total camps written to docs/camps.json")
