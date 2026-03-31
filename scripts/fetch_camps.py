@@ -70,7 +70,7 @@ MONTH_MAP = {
 def parse_season(facility):
     """Extract real open/close months from FACILITYSEASON array or description."""
     seasons = facility.get("FACILITYSEASON") or []
-    start_month, end_month = 5, 10  # fallback
+    start_month, end_month = 1, 12  # fallback to year-round when unknown
 
     for season in seasons:
         start_str = season.get("StartDate", "") or ""
