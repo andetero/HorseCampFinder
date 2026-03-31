@@ -59,6 +59,87 @@ def safe_get(url, headers=None, params=None, retries=3):
             time.sleep(3)
     return None
 
+# ── RIDB HELPERS ──────────────────────────────────────────────────────
+MONTH_MAP = {
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+    "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+    "january": 1, "february": 2, "march": 3, "april": 4, "june": 6,
+    "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12,
+}
+
+def parse_season(facility):
+    """Extract real open/close months from FACILITYSEASON array or description."""
+    seasons = facility.get("FACILITYSEASON") or []
+    start_month, end_month = 5, 10  # fallback
+
+    for season in seasons:
+        start_str = season.get("StartDate", "") or ""
+        end_str   = season.get("EndDate", "")   or ""
+        # Dates come as "YYYY-MM-DD" or "MM/DD" or month names
+        try:
+            if "-" in start_str:
+                start_month = int(start_str.split("-")[1])
+            if "-" in end_str:
+                end_month = int(end_str.split("-")[1])
+            break
+        except:
+            pass
+
+    # Also try the description text as fallback
+    if start_month == 5 and end_month == 10:
+        desc = (facility.get("FacilitySeasonDescription") or "").lower()
+        for name, num in MONTH_MAP.items():
+            if name in desc:
+                # First month mentioned = start, last = end
+                if num < start_month or start_month == 5:
+                    start_month = num
+                if num > end_month or end_month == 10:
+                    end_month = num
+
+    return max(1, min(12, start_month)), max(1, min(12, end_month))
+
+def parse_rig_length(facility):
+    """Extract max vehicle/rig length from campsite data."""
+    campsites = facility.get("CAMPSITE") or []
+    max_len = 0
+    for site in campsites:
+        # MaxVehicleLength is in feet
+        try:
+            length = int(site.get("MaxVehicleLength") or site.get("CampsiteMaxLength") or 0)
+            if length > max_len:
+                max_len = length
+        except:
+            pass
+    return max_len if max_len > 0 else 60  # fallback to 60 if not specified
+
+def parse_stall_count(facility):
+    """Extract actual stall count from amenities."""
+    amenities = facility.get("FACILITYAMENITY") or []
+    for a in amenities:
+        name = (a.get("AmenityName") or "").lower()
+        if "stall" in name:
+            try:
+                qty = int(a.get("AmenityValue") or a.get("Quantity") or 0)
+                if qty > 0:
+                    return qty
+            except:
+                pass
+    return 0
+
+def parse_paddock_count(facility):
+    """Extract actual corral/paddock count from amenities."""
+    amenities = facility.get("FACILITYAMENITY") or []
+    for a in amenities:
+        name = (a.get("AmenityName") or "").lower()
+        if "corral" in name or "paddock" in name:
+            try:
+                qty = int(a.get("AmenityValue") or a.get("Quantity") or 0)
+                if qty > 0:
+                    return qty
+            except:
+                pass
+    return 0
+
 # ── RIDB ───────────────────────────────────────────────────────────────
 def fetch_ridb_state(state):
     camps = {}
@@ -128,6 +209,7 @@ def fetch_ridb_state(state):
                 if "paddock"  in blob_lower: accommodations.append("Paddocks")
                 accommodations.append("Trails")
 
+                season_start, season_end = parse_season(f)
                 camps[fid] = {
                     "id":                  f"ridb-{fid}",
                     "name":                f.get("FacilityName", "Unknown Camp"),
@@ -139,15 +221,16 @@ def fetch_ridb_state(state):
                     "horseFeePerNight":    0.0,
                     "hookups":             list(dict.fromkeys(hookups)),
                     "accommodations":      list(dict.fromkeys(accommodations)),
-                    "maxRigLength":        60,
-                    "stallCount":          8 if "stall" in blob_lower else 0,
-                    "paddockCount":        6 if ("corral" in blob_lower or "paddock" in blob_lower) else 0,
+                     "maxRigLength":        parse_rig_length(f),
+                     "stallCount":          parse_stall_count(f),
+                     "paddockCount":        parse_paddock_count(f),
                     "phone":               f.get("FacilityPhone", ""),
+
                     "website":             f.get("FacilityReservationURL", "") or f"https://www.recreation.gov/camping/campgrounds/{fid}",
                     "description":         desc[:2000],
                     "isVerified":          True,
-                    "seasonStart":         5,
-                    "seasonEnd":           10,
+                     "seasonStart":         season_start,
+                     "seasonEnd":           season_end,
                     "hasWashRack":         "wash rack" in blob_lower,
                     "hasDumpStation":      "dump" in blob_lower,
                     "hasWifi":             "wifi" in blob_lower or "internet" in blob_lower,
