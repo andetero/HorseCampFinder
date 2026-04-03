@@ -1,6 +1,6 @@
 {
-  "generated": "2026-04-03T02:12:38.495471+00:00",
-  "count": 1651,
+  "generated": "2026-04-03T02:56:49.373953+00:00",
+  "count": 1652,
   "sources": [
     "Recreation.gov RIDB",
     "NPS API"
@@ -23256,12 +23256,12 @@
       "source": "Google Places"
     },
     {
-      "id": "google-ChIJM8KBB0DucIgRSLBdkiC5RZQ",
-      "name": "High Knob Ranch Equestrian Campground",
-      "location": "Equality, IL",
+      "id": "google-ChIJLcNGOZtFDYgRf3F9hHjSDto",
+      "name": "Middle Fork horse equestrian campground D",
+      "location": "Newtown, IL",
       "state": "IL",
-      "latitude": 37.6012192,
-      "longitude": -88.33443679999999,
+      "latitude": 40.1971954,
+      "longitude": -87.74478859999999,
       "pricePerNight": 0.0,
       "horseFeePerNight": 0.0,
       "hookups": [
@@ -23273,9 +23273,9 @@
       "maxRigLength": 55,
       "stallCount": 0,
       "paddockCount": 0,
-      "phone": "(618) 275-4494",
-      "website": "http://www.highknobcampground.net/",
-      "description": "Equestrian facility in Equality, IL. Verify amenities before arrival.",
+      "phone": "",
+      "website": "https://maps.google.com/?cid=15712727565002961279",
+      "description": "Equestrian facility in Newtown, IL. Verify amenities before arrival.",
       "isVerified": false,
       "seasonStart": 1,
       "seasonEnd": 12,
@@ -23284,8 +23284,8 @@
       "hasWifi": false,
       "hasBathhouse": false,
       "pullThroughAvailable": false,
-      "rating": 4.1,
-      "reviewCount": 188,
+      "rating": 5.0,
+      "reviewCount": 1,
       "imageColors": [
         "8B5E3C",
         "D4A853"
@@ -44897,6 +44897,43 @@
       "source": "Google Places"
     },
     {
+      "id": "google-ChIJnVhpNX0Px1QRBkPb96yxHD4",
+      "name": "Whitefish Horse Camp",
+      "location": "Crescent, OR",
+      "state": "OR",
+      "latitude": 43.47314979999999,
+      "longitude": -122.0322489,
+      "pricePerNight": 0.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "(541) 338-7869",
+      "website": "http://www.fs.usda.gov/recarea/deschutes/recreation/horseriding-camping/recarea/?recid=39126&actid=30",
+      "description": "Equestrian facility in Crescent, OR. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 1,
+      "seasonEnd": 12,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.4,
+      "reviewCount": 29,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
+    },
+    {
       "id": "ridb-251955",
       "name": "Shenango Lake Shenango Lakeside Picnic Shelter",
       "location": "Transfer, PA",
@@ -49332,7 +49369,7 @@
       "state": "TX",
       "latitude": 35.72307202084483,
       "longitude": -101.6638412514535,
-      "pricePerNight": 20.0,
+      "pricePerNight": 0.0,
       "horseFeePerNight": 0.0,
       "hookups": [
         "No Hookups"
@@ -49406,7 +49443,7 @@
       "state": "TX",
       "latitude": 35.529449,
       "longitude": -101.759431,
-      "pricePerNight": 20.0,
+      "pricePerNight": 0.0,
       "horseFeePerNight": 0.0,
       "hookups": [
         "No Hookups"
@@ -49443,7 +49480,7 @@
       "state": "TX",
       "latitude": 35.516667,
       "longitude": -102.78332999999998,
-      "pricePerNight": 20.0,
+      "pricePerNight": 0.0,
       "horseFeePerNight": 0.0,
       "hookups": [
         "No Hookups"
@@ -58272,43 +58309,6 @@
       "source": "RIDB"
     },
     {
-      "id": "google-ChIJ5TGv35thslIR0SPSLLBnIbE",
-      "name": "Trade River Equestrian Campground, Governor Knowles State Forest, WI",
-      "location": "St Croix Falls, WI",
-      "state": "WI",
-      "latitude": 45.5990638,
-      "longitude": -92.77363779999999,
-      "pricePerNight": 0.0,
-      "horseFeePerNight": 0.0,
-      "hookups": [
-        "No Hookups"
-      ],
-      "accommodations": [
-        "Trails"
-      ],
-      "maxRigLength": 55,
-      "stallCount": 0,
-      "paddockCount": 0,
-      "phone": "(715) 463-2898",
-      "website": "http://dnr.wi.gov/topic/StateForests/govKnowles/camping.html",
-      "description": "Equestrian facility in St Croix Falls, WI. Verify amenities before arrival.",
-      "isVerified": false,
-      "seasonStart": 1,
-      "seasonEnd": 12,
-      "hasWashRack": false,
-      "hasDumpStation": false,
-      "hasWifi": false,
-      "hasBathhouse": false,
-      "pullThroughAvailable": false,
-      "rating": 4.8,
-      "reviewCount": 18,
-      "imageColors": [
-        "8B5E3C",
-        "D4A853"
-      ],
-      "source": "Google Places"
-    },
-    {
       "id": "google-ChIJbdb0phjp_YcRlVvbt04U8z8",
       "name": "Campground on Equestrian Drive",
       "location": "La Valle, WI",
@@ -58686,7 +58686,7 @@
       "state": "WV",
       "latitude": 37.8581448077,
       "longitude": -81.0990251084,
-      "pricePerNight": 20.0,
+      "pricePerNight": 0.0,
       "horseFeePerNight": 0.0,
       "hookups": [
         "No Hookups"
@@ -61288,7 +61288,7 @@
       "state": "WY",
       "latitude": 43.6159078257903,
       "longitude": -110.665883983664,
-      "pricePerNight": 20.0,
+      "pricePerNight": 0.0,
       "horseFeePerNight": 0.0,
       "hookups": [
         "No Hookups"
@@ -61317,6 +61317,43 @@
         "5C7A4E"
       ],
       "source": "NPS"
+    },
+    {
+      "id": "google-ChIJtUkz6hO_aIcRZxlpv9dRfEQ",
+      "name": "Horse Campground",
+      "location": "Buford, WY",
+      "state": "WY",
+      "latitude": 41.2181234,
+      "longitude": -105.3863719,
+      "pricePerNight": 0.0,
+      "horseFeePerNight": 0.0,
+      "hookups": [
+        "No Hookups"
+      ],
+      "accommodations": [
+        "Trails"
+      ],
+      "maxRigLength": 55,
+      "stallCount": 0,
+      "paddockCount": 0,
+      "phone": "",
+      "website": "https://maps.google.com/?cid=4934909278762375527",
+      "description": "Equestrian facility in Buford, WY. Verify amenities before arrival.",
+      "isVerified": false,
+      "seasonStart": 1,
+      "seasonEnd": 12,
+      "hasWashRack": false,
+      "hasDumpStation": false,
+      "hasWifi": false,
+      "hasBathhouse": false,
+      "pullThroughAvailable": false,
+      "rating": 4.8,
+      "reviewCount": 6,
+      "imageColors": [
+        "8B5E3C",
+        "D4A853"
+      ],
+      "source": "Google Places"
     },
     {
       "id": "google-ChIJvaK948XmMlMRKYn9GlTM2Xg",
