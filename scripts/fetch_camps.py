@@ -140,6 +140,35 @@ def parse_paddock_count(facility):
                 pass
     return 0
 
+def parse_price(fid, headers):
+    """Fetch lowest nightly rate from campsites under this facility."""
+    data = safe_get(
+        f"{RIDB_BASE}/facilities/{fid}/campsites",
+        headers=headers,
+        params={"limit": 50, "offset": 0}
+    )
+    if not data:
+        return 0.0
+
+    lowest = 0.0
+    for site in (data.get("RECDATA") or []):
+        # Campsites have a SITEGROUP with fees, or CAMPSITE_FEES directly
+        for fee in (site.get("CAMPSITE_FEES") or []):
+            try:
+                amount = float(fee.get("FeeAmount") or 0)
+                if amount > 0 and (lowest == 0.0 or amount < lowest):
+                    lowest = amount
+            except:
+                pass
+        # Also check PERMITTEDEQUIPMENT for fee data
+        for eq in (site.get("PERMITTEDEQUIPMENT") or []):
+            try:
+                amount = float(eq.get("MaxLength") or 0)  # not fee, skip
+            except:
+                pass
+
+    return lowest
+
 # ── RIDB ───────────────────────────────────────────────────────────────
 def fetch_ridb_state(state):
     camps = {}
@@ -210,6 +239,7 @@ def fetch_ridb_state(state):
                 accommodations.append("Trails")
 
                 season_start, season_end = parse_season(f)
+                price = parse_price(fid, headers)
                 camps[fid] = {
                     "id":                  f"ridb-{fid}",
                     "name":                f.get("FacilityName", "Unknown Camp"),
@@ -217,7 +247,7 @@ def fetch_ridb_state(state):
                     "state":               fstate,
                     "latitude":            lat,
                     "longitude":           lng,
-                    "pricePerNight":       0.0,
+                    "pricePerNight":       price,
                     "horseFeePerNight":    0.0,
                     "hookups":             list(dict.fromkeys(hookups)),
                     "accommodations":      list(dict.fromkeys(accommodations)),
@@ -310,7 +340,7 @@ def fetch_nps_state(state):
             "state":               state,
             "latitude":            lat,
             "longitude":           lng,
-            "pricePerNight":       fee or 20.0,
+            "pricePerNight":       fee,
             "horseFeePerNight":    0.0,
             "hookups":             hookups,
             "accommodations":      list(dict.fromkeys(accommodations)),
