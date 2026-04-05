@@ -507,15 +507,28 @@ def fetch_osm(existing_camps):
 );
 out center;
 """
-    url = "https://overpass-api.de/api/interpreter"
-    try:
-        encoded = urllib.parse.urlencode({"data": query}).encode()
-        req = urllib.request.Request(url, data=encoded, method="POST")
-        req.add_header("User-Agent", "HorseCamp/1.0 (horsecampfinder.com)")
-        with urllib.request.urlopen(req, timeout=90) as r:
-            data = json.loads(r.read().decode())
-    except Exception as e:
-        print(f"  OSM fetch error: {e}")
+    # Try multiple Overpass API mirrors in case one is down/slow
+    mirrors = [
+        "https://overpass-api.de/api/interpreter",
+        "https://overpass.kumi.systems/api/interpreter",
+        "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    ]
+    data = None
+    for url in mirrors:
+        try:
+            encoded = urllib.parse.urlencode({"data": query}).encode()
+            req = urllib.request.Request(url, data=encoded, method="POST")
+            req.add_header("User-Agent", "HorseCamp/1.0 (horsecampfinder.com)")
+            with urllib.request.urlopen(req, timeout=120) as r:
+                data = json.loads(r.read().decode())
+            print(f"  OSM: connected via {url.split('/')[2]}")
+            break
+        except Exception as e:
+            print(f"  OSM mirror failed ({url.split('/')[2]}): {e}")
+            time.sleep(5)
+
+    if not data:
+        print("  OSM: all mirrors failed — skipping")
         return []
 
     STATES_BY_BBOX = {
@@ -652,7 +665,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "205-446-3994",
@@ -690,7 +703,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "256-954-1623",
@@ -728,7 +741,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "205-531-6952",
@@ -766,7 +779,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "205-365-3185",
@@ -804,7 +817,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "850-225-0302",
@@ -842,7 +855,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "251-401-6228",
@@ -880,7 +893,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "205-799-4601",
@@ -918,7 +931,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "251-747-6464",
@@ -956,7 +969,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "256-476-8335",
@@ -994,7 +1007,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "866-322-7736",
@@ -1032,7 +1045,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-550-0823",
@@ -1070,7 +1083,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "780-991-6995",
@@ -1108,7 +1121,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-276-1014",
@@ -1146,7 +1159,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "928-606-1058",
@@ -1184,7 +1197,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "520 349 5940",
@@ -1222,7 +1235,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-526-4276",
@@ -1260,7 +1273,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-525-0630",
@@ -1298,7 +1311,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-702-1786",
@@ -1336,7 +1349,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "623-329-5416",
@@ -1374,7 +1387,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "360-975-2836",
@@ -1412,7 +1425,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-300-0620",
@@ -1450,7 +1463,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "928-301-8523",
@@ -1488,7 +1501,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "520-368-1502",
@@ -1526,7 +1539,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "928-350-5576",
@@ -1564,7 +1577,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "360-489-5892",
@@ -1602,7 +1615,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "928-853-9005",
@@ -1640,7 +1653,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "928-525-4756",
@@ -1678,7 +1691,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-899-9335",
@@ -1716,7 +1729,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-369-0945",
@@ -1754,7 +1767,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-300-8176",
@@ -1792,7 +1805,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "928-757-3336",
@@ -1830,7 +1843,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "303-594-4433",
@@ -1868,7 +1881,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "928-671-1482",
@@ -1906,7 +1919,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "480-229-8765",
@@ -1944,7 +1957,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-620-0247",
@@ -1982,7 +1995,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-526-5555",
@@ -2020,7 +2033,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-390-1460",
@@ -2058,7 +2071,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-684-1092",
@@ -2096,7 +2109,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-697-3260",
@@ -2134,7 +2147,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "480-227-0568",
@@ -2172,7 +2185,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "",
@@ -2210,7 +2223,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "520-444-2460",
@@ -2248,7 +2261,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "520-226-5915",
@@ -2286,7 +2299,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "623-386-5124",
@@ -2324,7 +2337,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "520-400-3877",
@@ -2362,7 +2375,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "520-744-2457",
@@ -2400,7 +2413,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "707-939-5616",
@@ -2438,7 +2451,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "520-405-6041",
@@ -2476,7 +2489,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-880-1294",
@@ -2514,7 +2527,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-215-2659",
@@ -2552,7 +2565,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-509-0297",
@@ -2590,7 +2603,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-200-1777",
@@ -2628,7 +2641,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "928-210-2128",
@@ -2666,7 +2679,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "870-623-2824",
@@ -2704,7 +2717,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "501-626-3926",
@@ -2742,7 +2755,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "501-215-3881",
@@ -2780,7 +2793,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "870-653-6227",
@@ -2818,7 +2831,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "501-679-3606",
@@ -2856,7 +2869,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "870-715-7255",
@@ -2894,7 +2907,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "218-838-6541",
@@ -2932,7 +2945,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "501-776-7500",
@@ -2970,7 +2983,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "479-430-0623",
@@ -3008,7 +3021,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "479-209-0741",
@@ -3046,7 +3059,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "479-968-3651",
@@ -3084,7 +3097,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "479-264-3554",
@@ -3122,7 +3135,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "530-941-0544",
@@ -3160,7 +3173,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "530-515-8958",
@@ -3198,7 +3211,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "661-845-3013",
@@ -3236,7 +3249,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "682-444-1701",
@@ -3274,7 +3287,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "254-368-7891",
@@ -3312,7 +3325,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "559-285-1153",
@@ -3350,7 +3363,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "408-309-0538",
@@ -3388,7 +3401,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "951-541-4822",
@@ -3426,7 +3439,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "831-455-5098",
@@ -3464,7 +3477,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "760-377-4088",
@@ -3502,7 +3515,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "916-663-7032",
@@ -3540,7 +3553,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "530-949-9566",
@@ -3578,7 +3591,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "925-918-2848",
@@ -3616,7 +3629,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "714-357-5799",
@@ -3654,7 +3667,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "858-775-7299",
@@ -3692,7 +3705,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "707-688-1741",
@@ -3730,7 +3743,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "971-209-5314",
@@ -3768,7 +3781,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "907-230-9959",
@@ -3806,7 +3819,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "714-357-8955",
@@ -3844,7 +3857,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "818-641-6745",
@@ -3882,7 +3895,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "209-226-5145",
@@ -3920,7 +3933,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "209-406-4075",
@@ -3958,7 +3971,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "661-645-2088",
@@ -3996,7 +4009,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "951-746-7309",
@@ -4034,7 +4047,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "650-400-3604",
@@ -4072,7 +4085,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "559-553-3931",
@@ -4110,7 +4123,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "530-598-9722",
@@ -4148,7 +4161,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "530-306-1058",
@@ -4186,7 +4199,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "909-224-3191",
@@ -4224,7 +4237,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "303-344-5009",
@@ -4262,7 +4275,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "719-440-1344",
@@ -4300,7 +4313,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "303-644-9333",
@@ -4338,7 +4351,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "720-201-4672",
@@ -4376,7 +4389,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-596-0911",
@@ -4414,7 +4427,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "719-717-0202",
@@ -4452,7 +4465,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-284-5555",
@@ -4490,7 +4503,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "719-460-6361",
@@ -4528,7 +4541,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-215-3536",
@@ -4566,7 +4579,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "814-795-4757",
@@ -4604,7 +4617,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-640-2741",
@@ -4642,7 +4655,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-640-9222",
@@ -4680,7 +4693,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-560-3070",
@@ -4718,7 +4731,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-773-8390",
@@ -4756,7 +4769,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-731-5868",
@@ -4794,7 +4807,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "512-413-6471",
@@ -4832,7 +4845,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "720-320-7255",
@@ -4870,7 +4883,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "719-924-0341",
@@ -4908,7 +4921,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-625-0208",
@@ -4946,7 +4959,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-901-9507",
@@ -4984,7 +4997,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "309-236-2672",
@@ -5022,7 +5035,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "720-998-2163",
@@ -5060,7 +5073,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-484-5082",
@@ -5098,7 +5111,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "517-852-4484",
@@ -5136,7 +5149,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "443-676-3811",
@@ -5174,7 +5187,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "661-675-5346",
@@ -5212,7 +5225,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "860-210-0594",
@@ -5250,7 +5263,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "203-910-4008",
@@ -5288,7 +5301,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "860-208-8734",
@@ -5326,7 +5339,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "410-340-6818",
@@ -5364,7 +5377,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "302-542-8138",
@@ -5402,7 +5415,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "636-751-1200",
@@ -5440,7 +5453,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "352-442-2737",
@@ -5478,7 +5491,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "",
@@ -5516,7 +5529,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "727-433-5865",
@@ -5554,7 +5567,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "850-596-6874",
@@ -5592,7 +5605,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "850-543-8570",
@@ -5630,7 +5643,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "215-962-9173",
@@ -5668,7 +5681,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "386-847-4642",
@@ -5706,7 +5719,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "904-891-4788",
@@ -5744,7 +5757,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "850-207-2986",
@@ -5782,7 +5795,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "609-634-3402",
@@ -5820,7 +5833,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "386 478-1244",
@@ -5858,7 +5871,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "352-547-6665",
@@ -5896,7 +5909,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "352-693-0179",
@@ -5934,7 +5947,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "352-877-2484",
@@ -5972,7 +5985,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "678-777-4859",
@@ -6010,7 +6023,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "727-217-5772",
@@ -6048,7 +6061,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "850-304-4381",
@@ -6086,7 +6099,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "850-449-8591",
@@ -6124,7 +6137,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "850-528-1267",
@@ -6162,7 +6175,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "229-566-3095",
@@ -6200,7 +6213,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "912-222-7840",
@@ -6238,7 +6251,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "912-506-3325",
@@ -6276,7 +6289,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "321-274-2044",
@@ -6314,7 +6327,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "916-430-9750",
@@ -6352,7 +6365,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "912-531-9434",
@@ -6390,7 +6403,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "706-499-3758",
@@ -6428,7 +6441,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "404-626-5137",
@@ -6466,7 +6479,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "407-395-3863",
@@ -6504,7 +6517,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "770-868-7847",
@@ -6542,7 +6555,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "706-818-2938",
@@ -6580,7 +6593,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "706-676-8430",
@@ -6618,7 +6631,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "229-321-8886",
@@ -6656,7 +6669,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "912-667-5271",
@@ -6694,7 +6707,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "912-663-5036",
@@ -6732,7 +6745,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "706-831-6564",
@@ -6770,7 +6783,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "404-663-0514",
@@ -6808,7 +6821,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "478-627-2727",
@@ -6846,7 +6859,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "229-560-2738",
@@ -6884,7 +6897,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "360-982-1316",
@@ -6922,7 +6935,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-230-4338",
@@ -6960,7 +6973,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208 354-2471",
@@ -6998,7 +7011,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-631-4587",
@@ -7036,7 +7049,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-366-2964",
@@ -7074,7 +7087,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-521-4473",
@@ -7112,7 +7125,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-681-1059",
@@ -7150,7 +7163,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-731-3557",
@@ -7188,7 +7201,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "520-253-0732",
@@ -7226,7 +7239,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "303-324-9044",
@@ -7264,7 +7277,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-941-1367",
@@ -7302,7 +7315,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-869-0267",
@@ -7340,7 +7353,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-718-0166",
@@ -7378,7 +7391,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "",
@@ -7416,7 +7429,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "702-353-9130",
@@ -7454,7 +7467,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "503-932-6110",
@@ -7492,7 +7505,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "509-560-3634",
@@ -7530,7 +7543,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "618-267-6990",
@@ -7568,7 +7581,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "",
@@ -7606,7 +7619,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "217-538-1188",
@@ -7644,7 +7657,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "608-346-1734",
@@ -7682,7 +7695,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "314-312-9678",
@@ -7720,7 +7733,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "618-692-4823",
@@ -7758,7 +7771,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "217-343-9201",
@@ -7796,7 +7809,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "217-868-5182",
@@ -7834,7 +7847,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "618-927-5853",
@@ -7872,7 +7885,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "847-514-7928",
@@ -7910,7 +7923,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "815-370-7700",
@@ -7948,7 +7961,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "209-837-3534",
@@ -7986,7 +7999,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "",
@@ -8024,7 +8037,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "618-910-7946",
@@ -8062,7 +8075,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "618-244-0700",
@@ -8100,7 +8113,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "815-228-2058",
@@ -8138,7 +8151,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "812-569-6255",
@@ -8176,7 +8189,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "815-501-4647",
@@ -8214,7 +8227,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "",
@@ -8252,7 +8265,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "561-385-1390",
@@ -8290,7 +8303,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "217-821-7783",
@@ -8328,7 +8341,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "404-406-0326",
@@ -8366,7 +8379,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "217-343-6912",
@@ -8404,7 +8417,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "260-579-6655",
@@ -8442,7 +8455,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "502-525-3013",
@@ -8480,7 +8493,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "702-757-8146",
@@ -8518,7 +8531,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "765-720-3251",
@@ -8556,7 +8569,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "812-343-9084",
@@ -8594,7 +8607,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "317-296-0522",
@@ -8632,7 +8645,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "260-347-5777",
@@ -8670,7 +8683,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "765-404-6482",
@@ -8708,7 +8721,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "765-759-9507",
@@ -8746,7 +8759,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "812-664-3454",
@@ -8784,7 +8797,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "765-541-2884",
@@ -8822,7 +8835,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "765-400-0195",
@@ -8860,7 +8873,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "765-591-6370",
@@ -8898,7 +8911,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "765-524-1383",
@@ -8936,7 +8949,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "317-441-4249",
@@ -8974,7 +8987,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "765-730-3993",
@@ -9012,7 +9025,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "712-250-4802",
@@ -9050,7 +9063,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "319-215-5319",
@@ -9088,7 +9101,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "319-360-6370",
@@ -9126,7 +9139,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "515-689-9914",
@@ -9164,7 +9177,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "515-250-2330",
@@ -9202,7 +9215,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "641-990-8387",
@@ -9240,7 +9253,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "319-270-9627",
@@ -9278,7 +9291,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "712-592-2180",
@@ -9316,7 +9329,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "641-919-3671",
@@ -9354,7 +9367,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "319-480-5619",
@@ -9392,7 +9405,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "563-343-2765",
@@ -9430,7 +9443,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "763-453-2004",
@@ -9468,7 +9481,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "712-250-1431",
@@ -9506,7 +9519,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "913-424-3164",
@@ -9544,7 +9557,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "785-761-5900",
@@ -9582,7 +9595,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "316-651-0876",
@@ -9620,7 +9633,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "913-617-4396",
@@ -9658,7 +9671,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "785-821-0199",
@@ -9696,7 +9709,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "303-968-7345",
@@ -9734,7 +9747,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "785-623-9566",
@@ -9772,7 +9785,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "785-259-1271",
@@ -9810,7 +9823,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "785-672-0950",
@@ -9848,7 +9861,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "316-807-6140",
@@ -9886,7 +9899,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "785-250-1843",
@@ -9924,7 +9937,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "620-326-3001",
@@ -9962,7 +9975,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "907-419-5569",
@@ -10000,7 +10013,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "512-961-9482",
@@ -10038,7 +10051,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "785-969-9139",
@@ -10076,7 +10089,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "620-229-4066",
@@ -10114,7 +10127,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "559-765-5005",
@@ -10152,7 +10165,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "859-802-1050",
@@ -10190,7 +10203,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "270-646-7424",
@@ -10228,7 +10241,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "502-376-3573",
@@ -10266,7 +10279,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "859-379-4980",
@@ -10304,7 +10317,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "270-820-7246",
@@ -10342,7 +10355,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "606-682-3370",
@@ -10380,7 +10393,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "606-278-2600",
@@ -10418,7 +10431,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "859-240-5386",
@@ -10456,7 +10469,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "270-217-2170",
@@ -10494,7 +10507,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "931-209-1094",
@@ -10532,7 +10545,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "480-283-3664",
@@ -10570,7 +10583,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "859-797-4368",
@@ -10608,7 +10621,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "859-797-4368",
@@ -10646,7 +10659,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "318-458-6837",
@@ -10684,7 +10697,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "318-512-5901",
@@ -10722,7 +10735,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "318-243-2910",
@@ -10760,7 +10773,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "985-966-5591",
@@ -10798,7 +10811,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "337-842-7434",
@@ -10836,7 +10849,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "504-578-6262",
@@ -10874,7 +10887,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "225-247-2002",
@@ -10912,7 +10925,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "207-474-3014",
@@ -10950,7 +10963,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "207-205-1268",
@@ -10988,7 +11001,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "207-542-9660",
@@ -11026,7 +11039,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "207-532-8693",
@@ -11064,7 +11077,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "207-595-0948",
@@ -11102,7 +11115,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "617-901-1465",
@@ -11140,7 +11153,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "717-729-2767",
@@ -11178,7 +11191,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "301-678-6584",
@@ -11216,7 +11229,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "410-658-8187",
@@ -11254,7 +11267,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "443-945-6761",
@@ -11292,7 +11305,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "443-676-3811",
@@ -11330,7 +11343,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "443-690-2525",
@@ -11368,7 +11381,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "302-650-0197",
@@ -11406,7 +11419,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "413-246-0680",
@@ -11444,7 +11457,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "978-834-3013",
@@ -11482,7 +11495,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "774-573-0656",
@@ -11520,7 +11533,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "203-685-3050",
@@ -11558,7 +11571,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "978-212-9499",
@@ -11596,7 +11609,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "508-299-9810",
@@ -11634,7 +11647,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "781-883-7090",
@@ -11672,7 +11685,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "716-997-2019",
@@ -11710,7 +11723,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "419-410-7193",
@@ -11748,7 +11761,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "269-816-7898",
@@ -11786,7 +11799,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "507-391-2260",
@@ -11824,7 +11837,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "701-720-6660",
@@ -11862,7 +11875,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "218-731-9328",
@@ -11900,7 +11913,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "507-896-5550",
@@ -11938,7 +11951,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "507-840-0345",
@@ -11976,7 +11989,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "507-382-5679",
@@ -12014,7 +12027,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "218-298-2682",
@@ -12052,7 +12065,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "763-482-9062",
@@ -12090,7 +12103,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "612-597-8319",
@@ -12128,7 +12141,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "701-306-4478",
@@ -12166,7 +12179,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "662-205-0660",
@@ -12204,7 +12217,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "228-297-5557",
@@ -12242,7 +12255,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "504-481-1137",
@@ -12280,7 +12293,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "601-953-8038",
@@ -12318,7 +12331,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "601-831-5194",
@@ -12356,7 +12369,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "601-845-2093",
@@ -12394,7 +12407,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "225-278-8934",
@@ -12432,7 +12445,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "662-910-9506",
@@ -12470,7 +12483,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "251-599-2825",
@@ -12508,7 +12521,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "901-857-4074",
@@ -12546,7 +12559,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "228-760-6351",
@@ -12584,7 +12597,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "228-243-4048",
@@ -12622,7 +12635,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "601-746-7460",
@@ -12660,7 +12673,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "662-260-3282",
@@ -12698,7 +12711,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "225-278-8934",
@@ -12736,7 +12749,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "228-697-2120",
@@ -12774,7 +12787,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "573-252-4880",
@@ -12812,7 +12825,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "816-304-3533",
@@ -12850,7 +12863,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "314-803-6279",
@@ -12888,7 +12901,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "816-529-3543",
@@ -12926,7 +12939,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "417-237-0771",
@@ -12964,7 +12977,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "417-388-0303",
@@ -13002,7 +13015,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "816-355-4141",
@@ -13040,7 +13053,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "314-803-2516",
@@ -13078,7 +13091,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "573-276-8881",
@@ -13116,7 +13129,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "417-664-7949",
@@ -13154,7 +13167,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "262-909-0628",
@@ -13192,7 +13205,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "417 598-8084",
@@ -13230,7 +13243,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "574-360-6868",
@@ -13268,7 +13281,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "573-915-9750",
@@ -13306,7 +13319,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "417-588-5145",
@@ -13344,7 +13357,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "816-288-3507",
@@ -13382,7 +13395,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "636-377-9554",
@@ -13420,7 +13433,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "417-316-0119",
@@ -13458,7 +13471,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "573-822-2920",
@@ -13496,7 +13509,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "573-202-8262",
@@ -13534,7 +13547,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "573-465-3976",
@@ -13572,7 +13585,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "636-474-9190",
@@ -13610,7 +13623,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "661-378-6272",
@@ -13648,7 +13661,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "660-253-0260",
@@ -13686,7 +13699,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "314-814-2774",
@@ -13724,7 +13737,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-252-4388",
@@ -13762,7 +13775,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-799-3173",
@@ -13800,7 +13813,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-580-7476",
@@ -13838,7 +13851,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-579-6630",
@@ -13876,7 +13889,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-600-2937",
@@ -13914,7 +13927,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "334-300-6002",
@@ -13952,7 +13965,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-871-3792",
@@ -13990,7 +14003,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-846-3686",
@@ -14028,7 +14041,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-215-2659",
@@ -14066,7 +14079,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "901-652-1615",
@@ -14104,7 +14117,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-493-0431",
@@ -14142,7 +14155,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-502-8528",
@@ -14180,7 +14193,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "909-224-3191",
@@ -14218,7 +14231,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "805-338-9011",
@@ -14256,7 +14269,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-224-0658",
@@ -14294,7 +14307,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-599-5690",
@@ -14332,7 +14345,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-861-6811",
@@ -14370,7 +14383,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-239-2484",
@@ -14408,7 +14421,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-885-0319",
@@ -14446,7 +14459,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-209-7302",
@@ -14484,7 +14497,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-579-8605",
@@ -14522,7 +14535,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-827-5240",
@@ -14560,7 +14573,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-590-8682",
@@ -14598,7 +14611,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-646-0606",
@@ -14636,7 +14649,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-270-1603",
@@ -14674,7 +14687,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "406-260-8725",
@@ -14712,7 +14725,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "270-307-8852",
@@ -14750,7 +14763,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-631-1401",
@@ -14788,7 +14801,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-643-8018",
@@ -14826,7 +14839,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "308-889-3538",
@@ -14864,7 +14877,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "308-432-5954",
@@ -14902,7 +14915,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "308-379-5349",
@@ -14940,7 +14953,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-759-3095",
@@ -14978,7 +14991,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "308-208-2020",
@@ -15016,7 +15029,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "308-430-0969",
@@ -15054,7 +15067,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "308-324-3600",
@@ -15092,7 +15105,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-465-5855",
@@ -15130,7 +15143,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-305-2488",
@@ -15168,7 +15181,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-649-2263",
@@ -15206,7 +15219,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "308-289-1861",
@@ -15244,7 +15257,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "308-249-1935",
@@ -15282,7 +15295,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-416-4771",
@@ -15320,7 +15333,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-362-5439",
@@ -15358,7 +15371,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "530-524-1779",
@@ -15396,7 +15409,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "702-496-0987",
@@ -15434,7 +15447,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "702-350-9563",
@@ -15472,7 +15485,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "310-704-7101",
@@ -15510,7 +15523,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "702-303-9149",
@@ -15548,7 +15561,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "806-577-9215",
@@ -15586,7 +15599,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "775-970-5425",
@@ -15624,7 +15637,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "775-722-4261",
@@ -15662,7 +15675,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "775-752-3714",
@@ -15700,7 +15713,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "603-703-2462",
@@ -15738,7 +15751,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "",
@@ -15776,7 +15789,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "603-793-9919",
@@ -15814,7 +15827,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "781-799-7150",
@@ -15852,7 +15865,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "609-723-1155",
@@ -15890,7 +15903,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "215-939-1473",
@@ -15928,7 +15941,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "908-907-6401",
@@ -15966,7 +15979,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-877-9433",
@@ -16004,7 +16017,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-382-2370",
@@ -16042,7 +16055,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-681-4242",
@@ -16080,7 +16093,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "915-920-5169",
@@ -16118,7 +16131,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-274-6290",
@@ -16156,7 +16169,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "575-706-2794",
@@ -16194,7 +16207,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "575-760-8685",
@@ -16232,7 +16245,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "602-575-3340",
@@ -16270,7 +16283,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "469-580-2451",
@@ -16308,7 +16321,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-490-8224",
@@ -16346,7 +16359,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "850-276-4347",
@@ -16384,7 +16397,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-330-3066",
@@ -16422,7 +16435,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-290-7836",
@@ -16460,7 +16473,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-620-1040",
@@ -16498,7 +16511,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "575-687-2146",
@@ -16536,7 +16549,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-629-3369",
@@ -16574,7 +16587,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-495-8389",
@@ -16612,7 +16625,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "575-707-8139",
@@ -16650,7 +16663,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "575-557-6465",
@@ -16688,7 +16701,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "575-626-5294",
@@ -16726,7 +16739,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-301-3772",
@@ -16764,7 +16777,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "603-731-4956",
@@ -16802,7 +16815,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "575-815-4085",
@@ -16840,7 +16853,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "315-575-1951",
@@ -16878,7 +16891,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "607-661-9920",
@@ -16916,7 +16929,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "802-265-0702",
@@ -16954,7 +16967,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "716-713-1699",
@@ -16992,7 +17005,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "716 946-4163",
@@ -17030,7 +17043,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "",
@@ -17068,7 +17081,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "518-893-6116",
@@ -17106,7 +17119,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "607-437-0892",
@@ -17144,7 +17157,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "607-244-2763",
@@ -17182,7 +17195,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "315-729-0946",
@@ -17220,7 +17233,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "607-387-9557",
@@ -17258,7 +17271,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "518-645-0460",
@@ -17296,7 +17309,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "910-305-7874",
@@ -17334,7 +17347,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "704-619-5436",
@@ -17372,7 +17385,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "954-309-0158",
@@ -17410,7 +17423,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "978-697-8596",
@@ -17448,7 +17461,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "828-453-9816",
@@ -17486,7 +17499,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "919-669-8546",
@@ -17524,7 +17537,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "828-248-4463",
@@ -17562,7 +17575,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "252-489-0952",
@@ -17600,7 +17613,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "252-257-1959",
@@ -17638,7 +17651,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "336-609-9730",
@@ -17676,7 +17689,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "919-357-3949",
@@ -17714,7 +17727,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "704-458-7272",
@@ -17752,7 +17765,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "910-494-5888",
@@ -17790,7 +17803,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "910-422-9955",
@@ -17828,7 +17841,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "910-603-3162",
@@ -17866,7 +17879,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "336-362-8747",
@@ -17904,7 +17917,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "231-350-0838",
@@ -17942,7 +17955,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "919-810-0654",
@@ -17980,7 +17993,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "336-469-6097",
@@ -18018,7 +18031,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "701-721-3754",
@@ -18056,7 +18069,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "701-226-0067",
@@ -18094,7 +18107,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "701-490-2660",
@@ -18132,7 +18145,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "937-203-6383",
@@ -18170,7 +18183,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "419-788-1553",
@@ -18208,7 +18221,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "614-578-7809",
@@ -18246,7 +18259,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "419-684-9490",
@@ -18284,7 +18297,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "432-250-1665",
@@ -18322,7 +18335,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "503-930-6052",
@@ -18360,7 +18373,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "614-746-3969",
@@ -18398,7 +18411,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "740-707-7834",
@@ -18436,7 +18449,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "440 576-8949",
@@ -18474,7 +18487,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "513-623-2289",
@@ -18512,7 +18525,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "440-477-5086",
@@ -18550,7 +18563,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "614-832-2147",
@@ -18588,7 +18601,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "937-926-3355",
@@ -18626,7 +18639,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "267-500-5225",
@@ -18664,7 +18677,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "440-213-0748",
@@ -18702,7 +18715,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "330-348-1192",
@@ -18740,7 +18753,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "918-323-1555",
@@ -18778,7 +18791,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "580-276-0662",
@@ -18816,7 +18829,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "620-262-6892",
@@ -18854,7 +18867,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "918-939-9085",
@@ -18892,7 +18905,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "580-799-1690",
@@ -18930,7 +18943,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-831-4155",
@@ -18968,7 +18981,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-245-4227",
@@ -19006,7 +19019,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-612-8546",
@@ -19044,7 +19057,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-369-6619",
@@ -19082,7 +19095,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-291-0991",
@@ -19120,7 +19133,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-517-2979",
@@ -19158,7 +19171,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "903-926-2233",
@@ -19196,7 +19209,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "918-521-5744",
@@ -19234,7 +19247,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "715-205-0704",
@@ -19272,7 +19285,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "918-925-2227",
@@ -19310,7 +19323,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-898-9293",
@@ -19348,7 +19361,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-919-4056",
@@ -19386,7 +19399,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "816-260-8174",
@@ -19424,7 +19437,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "816-304-5015",
@@ -19462,7 +19475,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "580-334-7712",
@@ -19500,7 +19513,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-733-2443",
@@ -19538,7 +19551,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "580-819-3588",
@@ -19576,7 +19589,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "580-572-8339",
@@ -19614,7 +19627,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "918-721-1718",
@@ -19652,7 +19665,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-614-5084",
@@ -19690,7 +19703,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "918-636-2899",
@@ -19728,7 +19741,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405 318 3303",
@@ -19766,7 +19779,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "405-246-6189",
@@ -19804,7 +19817,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-324-8062",
@@ -19842,7 +19855,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-523-9155",
@@ -19880,7 +19893,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "503-866-8255",
@@ -19918,7 +19931,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-771-8382",
@@ -19956,7 +19969,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-821-5637",
@@ -19994,7 +20007,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "619-992-5342",
@@ -20032,7 +20045,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-895-4370",
@@ -20070,7 +20083,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-400-0061",
@@ -20108,7 +20121,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-232-7702",
@@ -20146,7 +20159,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-910-4140",
@@ -20184,7 +20197,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-550-1839",
@@ -20222,7 +20235,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "208-602-1213",
@@ -20260,7 +20273,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "503-539-8602",
@@ -20298,7 +20311,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-310-0951",
@@ -20336,7 +20349,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "503-730-4380",
@@ -20374,7 +20387,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "520-253-0732",
@@ -20412,7 +20425,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-430-6562",
@@ -20450,7 +20463,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-621-1405",
@@ -20488,7 +20501,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-241-4188",
@@ -20526,7 +20539,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "503-409-9577",
@@ -20564,7 +20577,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-219-2163",
@@ -20602,7 +20615,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "229-291-9656",
@@ -20640,7 +20653,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "609-500-9711",
@@ -20678,7 +20691,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "717-228-8070",
@@ -20716,7 +20729,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "717-847-5455",
@@ -20754,7 +20767,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "814-661-3141",
@@ -20792,7 +20805,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "717-515-3410",
@@ -20830,7 +20843,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "717-926-5709",
@@ -20868,7 +20881,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "724-444-6300",
@@ -20906,7 +20919,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "717-880-8255",
@@ -20944,7 +20957,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "724-423-5005",
@@ -20982,7 +20995,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "412-848-3501",
@@ -21020,7 +21033,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "717-368-3420",
@@ -21058,7 +21071,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "570-877-1682",
@@ -21096,7 +21109,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "571-215-3900",
@@ -21134,7 +21147,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "570-229-1887",
@@ -21172,7 +21185,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "724-323-6638",
@@ -21210,7 +21223,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "717-517-6691",
@@ -21248,7 +21261,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "814-392-5055",
@@ -21286,7 +21299,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "814-577-0160",
@@ -21324,7 +21337,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "717-324-8341",
@@ -21362,7 +21375,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "706-755-3720",
@@ -21400,7 +21413,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "843-679-5502",
@@ -21438,7 +21451,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "803-463-9119",
@@ -21476,7 +21489,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "843-364-5015",
@@ -21514,7 +21527,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "864-947-8880",
@@ -21552,7 +21565,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "843-476-8145",
@@ -21590,7 +21603,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "864-710-0963",
@@ -21628,7 +21641,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "864-444-3646",
@@ -21666,7 +21679,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "864-483-8202",
@@ -21704,7 +21717,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-630-1899",
@@ -21742,7 +21755,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "402-650-1940",
@@ -21780,7 +21793,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-569-3929",
@@ -21818,7 +21831,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-381-1202",
@@ -21856,7 +21869,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-923-7926",
@@ -21894,7 +21907,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-695-0812",
@@ -21932,7 +21945,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-695-5213",
@@ -21970,7 +21983,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "747-266-5333",
@@ -22008,7 +22021,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-673-3249",
@@ -22046,7 +22059,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "850-464-7939",
@@ -22084,7 +22097,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-758-3060",
@@ -22122,7 +22135,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-393-7096",
@@ -22160,7 +22173,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-995-1581",
@@ -22198,7 +22211,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-730-0455",
@@ -22236,7 +22249,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-393-2577",
@@ -22274,7 +22287,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-423-8109",
@@ -22312,7 +22325,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-200-1777",
@@ -22350,7 +22363,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "901-828-3619",
@@ -22388,7 +22401,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "423-462-5332",
@@ -22426,7 +22439,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "931-962-1790",
@@ -22464,7 +22477,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "401-965-1851",
@@ -22502,7 +22515,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "615-390-8150",
@@ -22540,7 +22553,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "423-933-3123",
@@ -22578,7 +22591,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "309-826-3565",
@@ -22616,7 +22629,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "615-969-0723",
@@ -22654,7 +22667,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "931-619-0773",
@@ -22692,7 +22705,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "615-491-3302",
@@ -22730,7 +22743,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "615-390-5074",
@@ -22768,7 +22781,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "865-454-4985",
@@ -22806,7 +22819,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "615-426-7833",
@@ -22844,7 +22857,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "731-414-2784",
@@ -22882,7 +22895,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "731-422-4512",
@@ -22920,7 +22933,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "",
@@ -22958,7 +22971,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "615-957-7170",
@@ -22996,7 +23009,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "501-762-4262",
@@ -23034,7 +23047,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "423-823-2867",
@@ -23072,7 +23085,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "615-962-2447",
@@ -23110,7 +23123,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "719-588-3203",
@@ -23148,7 +23161,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "423-506-3890",
@@ -23186,7 +23199,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "954-798-3205",
@@ -23224,7 +23237,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "423-253-4993",
@@ -23262,7 +23275,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "615-477-6655",
@@ -23300,7 +23313,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "323-854-5036",
@@ -23338,7 +23351,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "325-260-4778",
@@ -23376,7 +23389,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "210-313-4520",
@@ -23414,7 +23427,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "806-352-9508",
@@ -23452,7 +23465,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "806-674-8047",
@@ -23490,7 +23503,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "575-799-5943",
@@ -23528,7 +23541,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "806-477-9955",
@@ -23566,7 +23579,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "806-703-6263",
@@ -23604,7 +23617,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "940-594-9275",
@@ -23642,7 +23655,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "512-303-0589",
@@ -23680,7 +23693,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "903-267-9200",
@@ -23718,7 +23731,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "432-312-3489",
@@ -23756,7 +23769,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "432-288-5503",
@@ -23794,7 +23807,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "432-638-7122",
@@ -23832,7 +23845,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "512-589-6792",
@@ -23870,7 +23883,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "281-460-9107",
@@ -23908,7 +23921,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "308-289-6791",
@@ -23946,7 +23959,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "817-689-1214",
@@ -23984,7 +23997,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-520-2271",
@@ -24022,7 +24035,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "832-405-6840",
@@ -24060,7 +24073,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "541-420-7774",
@@ -24098,7 +24111,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "760-646-2019",
@@ -24136,7 +24149,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "281-515-8282",
@@ -24174,7 +24187,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "940-389-4449",
@@ -24212,7 +24225,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "817-925-2574",
@@ -24250,7 +24263,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "605-890-2188",
@@ -24288,7 +24301,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "813-618-4836",
@@ -24326,7 +24339,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "903-440-0118",
@@ -24364,7 +24377,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "512-825-9076",
@@ -24402,7 +24415,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "503-351-2085",
@@ -24440,7 +24453,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "915-494-9000",
@@ -24478,7 +24491,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "661-858-3903",
@@ -24516,7 +24529,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "432-940-8940",
@@ -24554,7 +24567,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-580-0012",
@@ -24592,7 +24605,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "830-313-3535",
@@ -24630,7 +24643,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "432-352-8077",
@@ -24668,7 +24681,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "903-668-3572",
@@ -24706,7 +24719,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "817-694-6553",
@@ -24744,7 +24757,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "254-931-0410",
@@ -24782,7 +24795,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "512-695-1799",
@@ -24820,7 +24833,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "210-912-5695",
@@ -24858,7 +24871,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "214-794-1776",
@@ -24896,7 +24909,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "903-780-1570",
@@ -24934,7 +24947,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "903-634-7626",
@@ -24972,7 +24985,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "714-512-7768",
@@ -25010,7 +25023,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "817-312-1303",
@@ -25048,7 +25061,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "325-207-2815",
@@ -25086,7 +25099,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "817-304-7277",
@@ -25124,7 +25137,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "972-571-6104",
@@ -25162,7 +25175,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "817-846-6186",
@@ -25200,7 +25213,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "940-365-2559",
@@ -25238,7 +25251,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "806-456-7885",
@@ -25276,7 +25289,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "434-222-1256",
@@ -25314,7 +25327,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "940-839-9000",
@@ -25352,7 +25365,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "940-839-7858",
@@ -25390,7 +25403,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "210-508-8266",
@@ -25428,7 +25441,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "817-929-7485",
@@ -25466,7 +25479,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "910-265-5780",
@@ -25504,7 +25517,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "210-232-2890",
@@ -25542,7 +25555,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "210-698-3300",
@@ -25580,7 +25593,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "502-370-7200",
@@ -25618,7 +25631,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "830-470-4779",
@@ -25656,7 +25669,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-331-4327",
@@ -25694,7 +25707,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "512-771-2506",
@@ -25732,7 +25745,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "573-528-5129",
@@ -25770,7 +25783,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "817-550-2241",
@@ -25808,7 +25821,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "817-980-9946",
@@ -25846,7 +25859,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "940-859-6587",
@@ -25884,7 +25897,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "432-371-2082",
@@ -25922,7 +25935,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-580-5277",
@@ -25960,7 +25973,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "505-908-7565",
@@ -25998,7 +26011,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "907-388-8649",
@@ -26036,7 +26049,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "903-474-5308",
@@ -26074,7 +26087,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "409-656-3822",
@@ -26112,7 +26125,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "434-222-1256",
@@ -26150,7 +26163,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "801-631-1275",
@@ -26188,7 +26201,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-669-4697",
@@ -26226,7 +26239,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "801-885-0259",
@@ -26264,7 +26277,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-228-8688",
@@ -26302,7 +26315,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-820-6206",
@@ -26340,7 +26353,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-703-4112",
@@ -26378,7 +26391,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-249-5567",
@@ -26416,7 +26429,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-784-3600",
@@ -26454,7 +26467,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-259-6226",
@@ -26492,7 +26505,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "801-735-3794",
@@ -26530,7 +26543,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "425-221-6863",
@@ -26568,7 +26581,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-650-9921",
@@ -26606,7 +26619,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-669-9082",
@@ -26644,7 +26657,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "801-649-9063",
@@ -26682,7 +26695,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "801-360-1491",
@@ -26720,7 +26733,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "801-502-3952",
@@ -26758,7 +26771,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "801-791-8829",
@@ -26796,7 +26809,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "801-560-6954",
@@ -26834,7 +26847,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "435-425-3519",
@@ -26872,7 +26885,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "801-403-7423",
@@ -26910,7 +26923,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "802-751-9896",
@@ -26948,7 +26961,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "702-290-7148",
@@ -26986,7 +26999,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "276-669-5457",
@@ -27024,7 +27037,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "434-531-2435",
@@ -27062,7 +27075,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "207-679-7508",
@@ -27100,7 +27113,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "540-246-4685",
@@ -27138,7 +27151,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "804-833-3459",
@@ -27176,7 +27189,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "540-631-5018",
@@ -27214,7 +27227,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "607-351-9650",
@@ -27252,7 +27265,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "540 463-1636",
@@ -27290,7 +27303,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "540-319-9810",
@@ -27328,7 +27341,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "336-247-2587",
@@ -27366,7 +27379,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "970-231-6689",
@@ -27404,7 +27417,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "802-299-1220",
@@ -27442,7 +27455,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "540-815-0928",
@@ -27480,7 +27493,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "540-841-7868",
@@ -27518,7 +27531,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "804-432-8474",
@@ -27556,7 +27569,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "540-974-5794",
@@ -27594,7 +27607,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "540-539-9356",
@@ -27632,7 +27645,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "509-430-1247",
@@ -27670,7 +27683,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "509-760-3930",
@@ -27708,7 +27721,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "509-220-4099",
@@ -27746,7 +27759,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "509-260-0385",
@@ -27784,7 +27797,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "509-991-7495",
@@ -27822,7 +27835,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "360-267-5521",
@@ -27860,7 +27873,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "360-846-3449",
@@ -27898,7 +27911,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "509-521-1100",
@@ -27936,7 +27949,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "509-833-5516",
@@ -27974,7 +27987,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "425-772-6792",
@@ -28012,7 +28025,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "360-888-0530",
@@ -28050,7 +28063,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "253-350-1891",
@@ -28088,7 +28101,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "503-812-7688",
@@ -28126,7 +28139,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "509-994-6635",
@@ -28164,7 +28177,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "608-764-5555",
@@ -28202,7 +28215,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "920-639-2071",
@@ -28240,7 +28253,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "715-864-7038",
@@ -28278,7 +28291,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "608-247-1414",
@@ -28316,7 +28329,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "715-730-0857",
@@ -28354,7 +28367,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "740-390-0240",
@@ -28392,7 +28405,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "262-878-2121",
@@ -28430,7 +28443,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "304-787-5656",
@@ -28468,7 +28481,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "304-722-4630",
@@ -28506,7 +28519,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-896-9134",
@@ -28544,7 +28557,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-277-1419",
@@ -28582,7 +28595,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-634-4171",
@@ -28620,7 +28633,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-250-6693",
@@ -28658,7 +28671,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-248-1373",
@@ -28696,7 +28709,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-455-2844",
@@ -28734,7 +28747,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-237-4889",
@@ -28772,7 +28785,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-733-2733",
@@ -28810,7 +28823,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "951-830-2698",
@@ -28848,7 +28861,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-709-7928",
@@ -28886,7 +28899,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-354-6683",
@@ -28924,7 +28937,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-760-8235",
@@ -28962,7 +28975,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-383-7778",
@@ -29000,7 +29013,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-752-2468",
@@ -29038,7 +29051,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-752-9615",
@@ -29076,7 +29089,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-366-2250",
@@ -29114,7 +29127,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-587-3200",
@@ -29152,7 +29165,7 @@ def fetch_layovers():
                 "Stalls",
                 "Corrals"
             ],
-        "maxRigLength": 60,
+        "maxRigLength": 0,
         "stallCount": 0,
         "paddockCount": 0,
         "phone": "307-358-2033",
