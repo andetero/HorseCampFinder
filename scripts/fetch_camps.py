@@ -58,6 +58,130 @@ def safe_get(url, headers=None, params=None, retries=3):
             time.sleep(3)
     return None
 
+# ── VERIFIED OVERRIDES ────────────────────────────────────────────────
+import csv, os
+
+OVERRIDE_FILE = "verified_overrides.csv"
+
+# Columns in the override CSV
+OVERRIDE_COLUMNS = [
+    "id", "name", "location", "state", "phone",
+    "hookups", "accommodations", "pricePerNight", "horseFeePerNight",
+    "maxRigLength", "stallCount", "paddockCount",
+    "hasWashRack", "hasDumpStation", "hasWifi", "hasBathhouse",
+    "pullThroughAvailable", "description", "verified", "notes"
+]
+
+def generate_override_template(camps_dict):
+    """Generate verified_overrides.csv as a blank template.
+    Called only when the file doesn't exist yet.
+    Rows are pre-populated with current data so wife can see what's there."""
+    rows = []
+    for camp in sorted(camps_dict.values(), key=lambda c: (c["state"], c["name"])):
+        rows.append({
+            "id":                   camp["id"],
+            "name":                 camp["name"],
+            "location":             camp["location"],
+            "state":                camp["state"],
+            "phone":                camp["phone"],
+            "hookups":              "|".join(camp["hookups"]),
+            "accommodations":       "|".join(camp["accommodations"]),
+            "pricePerNight":        camp["pricePerNight"],
+            "horseFeePerNight":     camp["horseFeePerNight"],
+            "maxRigLength":         camp["maxRigLength"],
+            "stallCount":           camp["stallCount"],
+            "paddockCount":         camp["paddockCount"],
+            "hasWashRack":          camp["hasWashRack"],
+            "hasDumpStation":       camp["hasDumpStation"],
+            "hasWifi":              camp["hasWifi"],
+            "hasBathhouse":         camp["hasBathhouse"],
+            "pullThroughAvailable": camp["pullThroughAvailable"],
+            "description":          camp["description"],
+            "verified":             "",   # wife fills: YES / NO / CLOSED
+            "notes":                "",   # wife fills: anything useful
+        })
+
+    with open(OVERRIDE_FILE, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=OVERRIDE_COLUMNS)
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"  Generated {OVERRIDE_FILE} with {len(rows)} camps — share with verifier")
+
+def apply_overrides(camps_dict):
+    """Read verified_overrides.csv and apply any edits to camps_dict.
+    Only rows where 'verified' is non-empty are applied.
+    Returns count of overrides applied."""
+    if not os.path.exists(OVERRIDE_FILE):
+        return 0
+
+    applied = 0
+    closed = 0
+
+    with open(OVERRIDE_FILE, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            cid = row.get("id", "").strip()
+            verified = row.get("verified", "").strip().upper()
+
+            if not cid or not verified:
+                continue  # skip unverified rows
+
+            # Mark closed camps — remove from dict entirely
+            if verified == "CLOSED":
+                if cid in camps_dict:
+                    del camps_dict[cid]
+                    closed += 1
+                continue
+
+            if verified != "YES":
+                continue
+
+            if cid not in camps_dict:
+                continue
+
+            camp = camps_dict[cid]
+
+            # Apply only non-empty fields
+            if row.get("name", "").strip():
+                camp["name"] = row["name"].strip()
+            if row.get("phone", "").strip():
+                camp["phone"] = row["phone"].strip()
+            if row.get("hookups", "").strip():
+                camp["hookups"] = [h.strip() for h in row["hookups"].split("|") if h.strip()]
+            if row.get("accommodations", "").strip():
+                camp["accommodations"] = [a.strip() for a in row["accommodations"].split("|") if a.strip()]
+            if row.get("pricePerNight", "").strip():
+                try: camp["pricePerNight"] = float(row["pricePerNight"])
+                except: pass
+            if row.get("horseFeePerNight", "").strip():
+                try: camp["horseFeePerNight"] = float(row["horseFeePerNight"])
+                except: pass
+            if row.get("maxRigLength", "").strip():
+                try: camp["maxRigLength"] = int(row["maxRigLength"])
+                except: pass
+            if row.get("stallCount", "").strip():
+                try: camp["stallCount"] = int(row["stallCount"])
+                except: pass
+            if row.get("paddockCount", "").strip():
+                try: camp["paddockCount"] = int(row["paddockCount"])
+                except: pass
+            for bool_field in ["hasWashRack","hasDumpStation","hasWifi","hasBathhouse","pullThroughAvailable"]:
+                val = row.get(bool_field, "").strip().upper()
+                if val in ("TRUE","YES","1"):
+                    camp[bool_field] = True
+                elif val in ("FALSE","NO","0"):
+                    camp[bool_field] = False
+            if row.get("description", "").strip():
+                camp["description"] = row["description"].strip()
+
+            camp["isVerified"] = True
+            camps_dict[cid] = camp
+            applied += 1
+
+    print(f"  Overrides applied: {applied} updated, {closed} marked closed")
+    return applied + closed
+
 # ── RIDB HELPERS ──────────────────────────────────────────────────────
 MONTH_MAP = {
     "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
@@ -29854,6 +29978,14 @@ def main():
         if cid not in all_camps:
             all_camps[cid] = camp
 
+    # Apply verified overrides — or generate template if first run
+    print("\nChecking verified overrides...")
+    if not os.path.exists(OVERRIDE_FILE):
+        print(f"  {OVERRIDE_FILE} not found — generating template for verification")
+        generate_override_template(all_camps)
+    else:
+        apply_overrides(all_camps)
+
     camps_list = sorted(all_camps.values(), key=lambda c: c["state"])
 
     output = {
@@ -29869,11 +30001,13 @@ def main():
 
     osm_count      = sum(1 for c in camps_list if c.get("source") == "OSM")
     layover_count  = sum(1 for c in camps_list if c.get("source") == "Layover")
+    verified_count = sum(1 for c in camps_list if c.get("isVerified") and c.get("source") in ("Layover","OSM"))
     print(f"\nDone. {len(camps_list)} total camps written to camps.json")
     print(f"  RIDB:         {total_ridb}")
     print(f"  NPS:          {total_nps}")
     print(f"  Layovers:     {layover_count}")
     print(f"  OSM:          {osm_count}")
+    print(f"  Verified:     {verified_count} manually verified")
     print(f"  Unique total: {len(camps_list)}")
 
 
