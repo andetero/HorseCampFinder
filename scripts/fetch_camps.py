@@ -541,10 +541,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -580,10 +577,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -619,10 +613,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -658,10 +649,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -697,10 +685,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -736,10 +721,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -775,10 +757,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -814,10 +793,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -853,10 +829,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -892,10 +865,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -931,10 +901,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -970,10 +937,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1009,10 +973,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1048,10 +1009,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1087,10 +1045,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1126,10 +1081,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1165,10 +1117,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1204,10 +1153,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1243,10 +1189,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1282,10 +1225,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1321,10 +1261,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1360,10 +1297,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1399,10 +1333,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1438,10 +1369,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1477,10 +1405,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1516,10 +1441,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1555,10 +1477,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1594,10 +1513,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1633,10 +1549,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1672,10 +1585,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1711,10 +1621,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1750,10 +1657,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1789,10 +1693,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1828,10 +1729,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1867,10 +1765,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1906,10 +1801,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1945,10 +1837,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -1984,10 +1873,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2023,10 +1909,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2062,10 +1945,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2101,10 +1981,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2140,10 +2017,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2179,10 +2053,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2218,10 +2089,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2257,10 +2125,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2296,10 +2161,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2335,10 +2197,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2374,10 +2233,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2413,10 +2269,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2452,10 +2305,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2491,10 +2341,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2530,10 +2377,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2569,10 +2413,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2608,10 +2449,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2647,10 +2485,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2686,10 +2521,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2725,10 +2557,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2764,10 +2593,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2803,10 +2629,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2842,10 +2665,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2881,10 +2701,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2920,10 +2737,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2959,10 +2773,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -2998,10 +2809,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3037,10 +2845,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3076,10 +2881,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3115,10 +2917,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3154,10 +2953,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3193,10 +2989,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3232,10 +3025,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3271,10 +3061,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3310,10 +3097,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3349,10 +3133,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3388,10 +3169,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3427,10 +3205,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3466,10 +3241,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3505,10 +3277,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3544,10 +3313,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3583,10 +3349,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3622,10 +3385,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3661,10 +3421,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3700,10 +3457,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3739,10 +3493,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3778,10 +3529,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3817,10 +3565,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3856,10 +3601,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3895,10 +3637,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3934,10 +3673,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -3973,10 +3709,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4012,10 +3745,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4051,10 +3781,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4090,10 +3817,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4129,10 +3853,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4168,10 +3889,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4207,10 +3925,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4246,10 +3961,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4285,10 +3997,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4324,10 +4033,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4363,10 +4069,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4402,10 +4105,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4441,10 +4141,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4480,10 +4177,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4519,10 +4213,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4558,10 +4249,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4597,10 +4285,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4636,10 +4321,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4675,10 +4357,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4714,10 +4393,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4753,10 +4429,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4792,10 +4465,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4831,10 +4501,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4870,10 +4537,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4909,10 +4573,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4948,10 +4609,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -4987,10 +4645,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5026,10 +4681,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5065,10 +4717,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5104,10 +4753,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5143,10 +4789,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5182,10 +4825,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5221,10 +4861,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5260,10 +4897,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5299,10 +4933,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5338,10 +4969,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5377,10 +5005,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5416,10 +5041,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5455,10 +5077,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5494,10 +5113,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5533,10 +5149,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5572,10 +5185,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5611,10 +5221,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5650,10 +5257,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5689,10 +5293,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5728,10 +5329,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5767,10 +5365,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5806,10 +5401,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5845,10 +5437,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5884,10 +5473,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5923,10 +5509,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -5962,10 +5545,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6001,10 +5581,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6040,10 +5617,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6079,10 +5653,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6118,10 +5689,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6157,10 +5725,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6196,10 +5761,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6235,10 +5797,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6274,10 +5833,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6313,10 +5869,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6352,10 +5905,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6391,10 +5941,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6430,10 +5977,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6469,10 +6013,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6508,10 +6049,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6547,10 +6085,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6586,10 +6121,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6625,10 +6157,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6664,10 +6193,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6703,10 +6229,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6742,10 +6265,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6781,10 +6301,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6820,10 +6337,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6859,10 +6373,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6898,10 +6409,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6937,10 +6445,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -6976,10 +6481,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7015,10 +6517,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7054,10 +6553,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7093,10 +6589,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7132,10 +6625,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7171,10 +6661,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7210,10 +6697,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7249,10 +6733,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7288,10 +6769,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7327,10 +6805,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7366,10 +6841,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7405,10 +6877,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7444,10 +6913,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7483,10 +6949,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7522,10 +6985,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7561,10 +7021,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7600,10 +7057,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7639,10 +7093,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7678,10 +7129,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7717,10 +7165,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7756,10 +7201,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7795,10 +7237,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7834,10 +7273,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7873,10 +7309,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7912,10 +7345,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7951,10 +7381,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -7990,10 +7417,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8029,10 +7453,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8068,10 +7489,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8107,10 +7525,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8146,10 +7561,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8185,10 +7597,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8224,10 +7633,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8263,10 +7669,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8302,10 +7705,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8341,10 +7741,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8380,10 +7777,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8419,10 +7813,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8458,10 +7849,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8497,10 +7885,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8536,10 +7921,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8575,10 +7957,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8614,10 +7993,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8653,10 +8029,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8692,10 +8065,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8731,10 +8101,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8770,10 +8137,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8809,10 +8173,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8848,10 +8209,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8887,10 +8245,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8926,10 +8281,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -8965,10 +8317,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9004,10 +8353,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9043,10 +8389,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9082,10 +8425,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9121,10 +8461,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9160,10 +8497,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9199,10 +8533,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9238,10 +8569,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9277,10 +8605,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9316,10 +8641,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9355,10 +8677,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9394,10 +8713,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9433,10 +8749,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9472,10 +8785,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9511,10 +8821,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9550,10 +8857,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9589,10 +8893,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9628,10 +8929,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9667,10 +8965,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9706,10 +9001,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9745,10 +9037,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9784,10 +9073,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9823,10 +9109,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9862,10 +9145,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9901,10 +9181,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9940,10 +9217,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -9979,10 +9253,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10018,10 +9289,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10057,10 +9325,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10096,10 +9361,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10135,10 +9397,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10174,10 +9433,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10213,10 +9469,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10252,10 +9505,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10291,10 +9541,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10330,10 +9577,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10369,10 +9613,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10408,10 +9649,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10447,10 +9685,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10486,10 +9721,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10525,10 +9757,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10564,10 +9793,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10603,10 +9829,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10642,10 +9865,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10681,10 +9901,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10720,10 +9937,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10759,10 +9973,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10798,10 +10009,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10837,10 +10045,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10876,10 +10081,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10915,10 +10117,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10954,10 +10153,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -10993,10 +10189,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11032,10 +10225,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11071,10 +10261,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11110,10 +10297,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11149,10 +10333,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11188,10 +10369,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11227,10 +10405,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11266,10 +10441,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11305,10 +10477,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11344,10 +10513,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11383,10 +10549,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11422,10 +10585,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11461,10 +10621,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11500,10 +10657,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11539,10 +10693,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11578,10 +10729,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11617,10 +10765,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11656,10 +10801,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11695,10 +10837,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11734,10 +10873,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11773,10 +10909,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11812,10 +10945,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11851,10 +10981,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11890,10 +11017,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11929,10 +11053,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -11968,10 +11089,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12007,10 +11125,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12046,10 +11161,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12085,10 +11197,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12124,10 +11233,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12163,10 +11269,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12202,10 +11305,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12241,10 +11341,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12280,10 +11377,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12319,10 +11413,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12358,10 +11449,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12397,10 +11485,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12436,10 +11521,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12475,10 +11557,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12514,10 +11593,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12553,10 +11629,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12592,10 +11665,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12631,10 +11701,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12670,10 +11737,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12709,10 +11773,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12748,10 +11809,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12787,10 +11845,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12826,10 +11881,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12865,10 +11917,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12904,10 +11953,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12943,10 +11989,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -12982,10 +12025,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13021,10 +12061,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13060,10 +12097,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13099,10 +12133,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13138,10 +12169,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13177,10 +12205,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13216,10 +12241,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13255,10 +12277,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13294,10 +12313,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13333,10 +12349,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13372,10 +12385,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13411,10 +12421,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13450,10 +12457,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13489,10 +12493,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13528,10 +12529,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13567,10 +12565,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13606,10 +12601,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13645,10 +12637,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13684,10 +12673,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13723,10 +12709,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13762,10 +12745,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13801,10 +12781,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13840,10 +12817,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13879,10 +12853,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13918,10 +12889,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13957,10 +12925,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -13996,10 +12961,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14035,10 +12997,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14074,10 +13033,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14113,10 +13069,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14152,10 +13105,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14191,10 +13141,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14230,10 +13177,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14269,10 +13213,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14308,10 +13249,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14347,10 +13285,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14386,10 +13321,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14425,10 +13357,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14464,10 +13393,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14503,10 +13429,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14542,10 +13465,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14581,10 +13501,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14620,10 +13537,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14659,10 +13573,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14698,10 +13609,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14737,10 +13645,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14776,10 +13681,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14815,10 +13717,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14854,10 +13753,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14893,10 +13789,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14932,10 +13825,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -14971,10 +13861,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15010,10 +13897,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15049,10 +13933,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15088,10 +13969,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15127,10 +14005,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15166,10 +14041,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15205,10 +14077,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15244,10 +14113,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15283,10 +14149,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15322,10 +14185,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15361,10 +14221,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15400,10 +14257,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15439,10 +14293,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15478,10 +14329,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15517,10 +14365,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15556,10 +14401,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15595,10 +14437,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15634,10 +14473,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15673,10 +14509,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15712,10 +14545,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15751,10 +14581,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15790,10 +14617,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15829,10 +14653,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15868,10 +14689,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15907,10 +14725,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15946,10 +14761,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -15985,10 +14797,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16024,10 +14833,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16063,10 +14869,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16102,10 +14905,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16141,10 +14941,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16180,10 +14977,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16219,10 +15013,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16258,10 +15049,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16297,10 +15085,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16336,10 +15121,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16375,10 +15157,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16414,10 +15193,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16453,10 +15229,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16492,10 +15265,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16531,10 +15301,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16570,10 +15337,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16609,10 +15373,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16648,10 +15409,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16687,10 +15445,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16726,10 +15481,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16765,10 +15517,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16804,10 +15553,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16843,10 +15589,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16882,10 +15625,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16921,10 +15661,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16960,10 +15697,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -16999,10 +15733,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17038,10 +15769,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17077,10 +15805,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17116,10 +15841,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17155,10 +15877,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17194,10 +15913,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17233,10 +15949,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17272,10 +15985,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17311,10 +16021,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17350,10 +16057,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17389,10 +16093,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17428,10 +16129,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17467,10 +16165,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17506,10 +16201,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17545,10 +16237,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17584,10 +16273,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17623,10 +16309,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17662,10 +16345,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17701,10 +16381,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17740,10 +16417,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17779,10 +16453,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17818,10 +16489,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17857,10 +16525,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17896,10 +16561,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17935,10 +16597,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -17974,10 +16633,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18013,10 +16669,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18052,10 +16705,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18091,10 +16741,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18130,10 +16777,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18169,10 +16813,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18208,10 +16849,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18247,10 +16885,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18286,10 +16921,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18325,10 +16957,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18364,10 +16993,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18403,10 +17029,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18442,10 +17065,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18481,10 +17101,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18520,10 +17137,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18559,10 +17173,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18598,10 +17209,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18637,10 +17245,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18676,10 +17281,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18715,10 +17317,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18754,10 +17353,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18793,10 +17389,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18832,10 +17425,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18871,10 +17461,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18910,10 +17497,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18949,10 +17533,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -18988,10 +17569,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19027,10 +17605,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19066,10 +17641,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19105,10 +17677,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19144,10 +17713,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19183,10 +17749,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19222,10 +17785,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19261,10 +17821,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19300,10 +17857,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19339,10 +17893,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19378,10 +17929,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19417,10 +17965,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19456,10 +18001,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19495,10 +18037,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19534,10 +18073,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19573,10 +18109,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19612,10 +18145,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19651,10 +18181,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19690,10 +18217,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19729,10 +18253,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19768,10 +18289,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19807,10 +18325,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19846,10 +18361,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19885,10 +18397,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19924,10 +18433,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -19963,10 +18469,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20002,10 +18505,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20041,10 +18541,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20080,10 +18577,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20119,10 +18613,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20158,10 +18649,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20197,10 +18685,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20236,10 +18721,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20275,10 +18757,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20314,10 +18793,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20353,10 +18829,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20392,10 +18865,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20431,10 +18901,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20470,10 +18937,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20509,10 +18973,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20548,10 +19009,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20587,10 +19045,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20626,10 +19081,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20665,10 +19117,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20704,10 +19153,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20743,10 +19189,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20782,10 +19225,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20821,10 +19261,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20860,10 +19297,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20899,10 +19333,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20938,10 +19369,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -20977,10 +19405,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21016,10 +19441,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21055,10 +19477,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21094,10 +19513,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21133,10 +19549,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21172,10 +19585,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21211,10 +19621,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21250,10 +19657,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21289,10 +19693,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21328,10 +19729,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21367,10 +19765,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21406,10 +19801,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21445,10 +19837,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21484,10 +19873,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21523,10 +19909,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21562,10 +19945,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21601,10 +19981,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21640,10 +20017,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21679,10 +20053,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21718,10 +20089,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21757,10 +20125,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21796,10 +20161,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21835,10 +20197,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21874,10 +20233,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21913,10 +20269,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21952,10 +20305,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -21991,10 +20341,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22030,10 +20377,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22069,10 +20413,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22108,10 +20449,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22147,10 +20485,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22186,10 +20521,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22225,10 +20557,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22264,10 +20593,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22303,10 +20629,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22342,10 +20665,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22381,10 +20701,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22420,10 +20737,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22459,10 +20773,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22498,10 +20809,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22537,10 +20845,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22576,10 +20881,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22615,10 +20917,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22654,10 +20953,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22693,10 +20989,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22732,10 +21025,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22771,10 +21061,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22810,10 +21097,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22849,10 +21133,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22888,10 +21169,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22927,10 +21205,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -22966,10 +21241,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23005,10 +21277,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23044,10 +21313,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23083,10 +21349,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23122,10 +21385,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23161,10 +21421,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23200,10 +21457,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23239,10 +21493,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23278,10 +21529,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23317,10 +21565,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23356,10 +21601,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23395,10 +21637,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23434,10 +21673,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23473,10 +21709,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23512,10 +21745,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23551,10 +21781,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23590,10 +21817,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23629,10 +21853,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23668,10 +21889,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23707,10 +21925,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23746,10 +21961,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23785,10 +21997,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23824,10 +22033,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23863,10 +22069,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23902,10 +22105,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23941,10 +22141,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -23980,10 +22177,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24019,10 +22213,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24058,10 +22249,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24097,10 +22285,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24136,10 +22321,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24175,10 +22357,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24214,10 +22393,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24253,10 +22429,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24292,10 +22465,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24331,10 +22501,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24370,10 +22537,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24409,10 +22573,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24448,10 +22609,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24487,10 +22645,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24526,10 +22681,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24565,10 +22717,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24604,10 +22753,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24643,10 +22789,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24682,10 +22825,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24721,10 +22861,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24760,10 +22897,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24799,10 +22933,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24838,10 +22969,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24877,10 +23005,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24916,10 +23041,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24955,10 +23077,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -24994,10 +23113,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25033,10 +23149,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25072,10 +23185,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25111,10 +23221,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25150,10 +23257,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25189,10 +23293,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25228,10 +23329,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25267,10 +23365,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25306,10 +23401,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25345,10 +23437,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25384,10 +23473,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25423,10 +23509,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25462,10 +23545,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25501,10 +23581,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25540,10 +23617,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25579,10 +23653,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25618,10 +23689,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25657,10 +23725,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25696,10 +23761,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25735,10 +23797,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25774,10 +23833,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25813,10 +23869,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25852,10 +23905,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25891,10 +23941,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25930,10 +23977,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -25969,10 +24013,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26008,10 +24049,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26047,10 +24085,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26086,10 +24121,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26125,10 +24157,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26164,10 +24193,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26203,10 +24229,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26242,10 +24265,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26281,10 +24301,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26320,10 +24337,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26359,10 +24373,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26398,10 +24409,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26437,10 +24445,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26476,10 +24481,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26515,10 +24517,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26554,10 +24553,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26593,10 +24589,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26632,10 +24625,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26671,10 +24661,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26710,10 +24697,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26749,10 +24733,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26788,10 +24769,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26827,10 +24805,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26866,10 +24841,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26905,10 +24877,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26944,10 +24913,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -26983,10 +24949,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27022,10 +24985,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27061,10 +25021,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27100,10 +25057,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27139,10 +25093,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27178,10 +25129,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27217,10 +25165,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27256,10 +25201,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27295,10 +25237,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27334,10 +25273,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27373,10 +25309,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27412,10 +25345,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27451,10 +25381,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27490,10 +25417,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27529,10 +25453,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27568,10 +25489,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27607,10 +25525,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27646,10 +25561,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27685,10 +25597,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27724,10 +25633,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27763,10 +25669,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27802,10 +25705,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27841,10 +25741,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27880,10 +25777,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27919,10 +25813,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27958,10 +25849,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -27997,10 +25885,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28036,10 +25921,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28075,10 +25957,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28114,10 +25993,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28153,10 +26029,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28192,10 +26065,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28231,10 +26101,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28270,10 +26137,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28309,10 +26173,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28348,10 +26209,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28387,10 +26245,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28426,10 +26281,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28465,10 +26317,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28504,10 +26353,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28543,10 +26389,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28582,10 +26425,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28621,10 +26461,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28660,10 +26497,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28699,10 +26533,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28738,10 +26569,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28777,10 +26605,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28816,10 +26641,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28855,10 +26677,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28894,10 +26713,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28933,10 +26749,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -28972,10 +26785,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29011,10 +26821,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29050,10 +26857,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29089,10 +26893,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29128,10 +26929,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29167,10 +26965,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29206,10 +27001,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29245,10 +27037,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29284,10 +27073,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29323,10 +27109,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29362,10 +27145,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29401,10 +27181,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29440,10 +27217,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29479,10 +27253,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29518,10 +27289,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29557,10 +27325,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29596,10 +27361,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29635,10 +27397,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29674,10 +27433,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29713,10 +27469,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29752,10 +27505,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29791,10 +27541,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29830,10 +27577,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29869,10 +27613,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29908,10 +27649,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29947,10 +27685,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -29986,10 +27721,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30025,10 +27757,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30064,10 +27793,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30103,10 +27829,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30142,10 +27865,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30181,10 +27901,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30220,10 +27937,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30259,10 +27973,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30298,10 +28009,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30337,10 +28045,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30376,10 +28081,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30415,10 +28117,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30454,10 +28153,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30493,10 +28189,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30532,10 +28225,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30571,10 +28261,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30610,10 +28297,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30649,10 +28333,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30688,10 +28369,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30727,10 +28405,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30766,10 +28441,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30805,10 +28477,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30844,10 +28513,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30883,10 +28549,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30922,10 +28585,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -30961,10 +28621,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31000,10 +28657,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31039,10 +28693,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31078,10 +28729,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31117,10 +28765,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31156,10 +28801,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31195,10 +28837,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31234,10 +28873,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31273,10 +28909,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31312,10 +28945,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31351,10 +28981,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31390,10 +29017,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31429,10 +29053,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31468,10 +29089,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31507,10 +29125,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31546,10 +29161,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31585,10 +29197,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31624,10 +29233,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31663,10 +29269,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31702,10 +29305,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31741,10 +29341,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     },
     {
@@ -31780,10 +29377,7 @@ def fetch_layovers():
         "pullThroughAvailable": False,
         "rating": 0.0,
         "reviewCount": 0,
-        "imageColors": [
-            "8B5E3C",
-            "D4A853"
-        ],
+        "imageColors": ["D4803A", "D4A853"],
         "source": "Layover"
     }
 ]
