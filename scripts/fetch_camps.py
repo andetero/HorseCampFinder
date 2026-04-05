@@ -310,7 +310,15 @@ def fetch_ridb_state(state):
                 desc       = strip_html(f.get("FacilityDescription", ""))
                 blob       = " ".join(amenities + activities + [desc])
 
-                if not is_equestrian(blob):
+                # For activity=9 (Horseback Riding) searches, require equestrian
+                # keywords in description/amenities too — not just the activity name.
+                # This prevents generic multi-use areas (OHV parks etc.) from matching
+                # simply because they list horseback riding as one of many activities.
+                if param_key == "activity" and param_val == "9":
+                    desc_amenity_blob = " ".join(amenities + [desc])
+                    if not is_equestrian(desc_amenity_blob):
+                        continue
+                elif not is_equestrian(blob):
                     continue
 
                 addr  = (f.get("FACILITYADDRESS") or [{}])[0]
@@ -641,10 +649,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -680,10 +687,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -719,10 +725,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -758,10 +763,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -797,10 +801,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -836,10 +839,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -875,10 +877,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -914,10 +915,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -953,10 +953,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -992,10 +991,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1031,10 +1029,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1070,10 +1067,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1109,10 +1105,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1148,10 +1143,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1187,10 +1181,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1226,10 +1219,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1265,10 +1257,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1304,10 +1295,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1343,10 +1333,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1382,10 +1371,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1421,10 +1409,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1460,10 +1447,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1499,10 +1485,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1538,10 +1523,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1577,10 +1561,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1616,10 +1599,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1655,10 +1637,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1694,10 +1675,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1733,10 +1713,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1772,10 +1751,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1811,10 +1789,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1850,10 +1827,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1889,10 +1865,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1928,10 +1903,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -1967,10 +1941,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2006,10 +1979,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2045,10 +2017,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2084,10 +2055,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2123,10 +2093,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2162,10 +2131,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2201,10 +2169,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2240,10 +2207,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2279,10 +2245,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2318,10 +2283,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2357,10 +2321,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2396,10 +2359,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2435,10 +2397,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2474,10 +2435,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2513,10 +2473,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2552,10 +2511,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2591,10 +2549,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2630,10 +2587,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2669,10 +2625,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2708,10 +2663,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2747,10 +2701,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2786,10 +2739,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2825,10 +2777,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2864,10 +2815,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2903,10 +2853,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2942,10 +2891,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -2981,10 +2929,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3020,10 +2967,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3059,10 +3005,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3098,10 +3043,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3137,10 +3081,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3176,10 +3119,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3215,10 +3157,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3254,10 +3195,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3293,10 +3233,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3332,10 +3271,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3371,10 +3309,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3410,10 +3347,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3449,10 +3385,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3488,10 +3423,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3527,10 +3461,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3566,10 +3499,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3605,10 +3537,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3644,10 +3575,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3683,10 +3613,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3722,10 +3651,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3761,10 +3689,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3800,10 +3727,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3839,10 +3765,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3878,10 +3803,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3917,10 +3841,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3956,10 +3879,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -3995,10 +3917,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4034,10 +3955,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4073,10 +3993,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4112,10 +4031,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4151,10 +4069,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4190,10 +4107,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4229,10 +4145,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4268,10 +4183,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4307,10 +4221,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4346,10 +4259,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4385,10 +4297,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4424,10 +4335,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4463,10 +4373,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4502,10 +4411,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4541,10 +4449,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4580,10 +4487,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4619,10 +4525,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4658,10 +4563,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4697,10 +4601,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4736,10 +4639,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4775,10 +4677,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4814,10 +4715,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4853,10 +4753,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4892,10 +4791,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4931,10 +4829,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -4970,10 +4867,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5009,10 +4905,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5048,10 +4943,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5087,10 +4981,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5126,10 +5019,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5165,10 +5057,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5204,10 +5095,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5243,10 +5133,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5282,10 +5171,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5321,10 +5209,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5360,10 +5247,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5399,10 +5285,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5438,10 +5323,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5477,10 +5361,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5516,10 +5399,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5555,10 +5437,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5594,10 +5475,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5633,10 +5513,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5672,10 +5551,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5711,10 +5589,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5750,10 +5627,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5789,10 +5665,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5828,10 +5703,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5867,10 +5741,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5906,10 +5779,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5945,10 +5817,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -5984,10 +5855,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6023,10 +5893,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6062,10 +5931,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6101,10 +5969,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6140,10 +6007,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6179,10 +6045,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6218,10 +6083,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6257,10 +6121,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6296,10 +6159,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6335,10 +6197,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6374,10 +6235,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6413,10 +6273,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6452,10 +6311,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6491,10 +6349,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6530,10 +6387,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6569,10 +6425,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6608,10 +6463,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6647,10 +6501,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6686,10 +6539,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6725,10 +6577,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6764,10 +6615,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6803,10 +6653,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6842,10 +6691,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6881,10 +6729,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6920,10 +6767,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6959,10 +6805,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -6998,10 +6843,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7037,10 +6881,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7076,10 +6919,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7115,10 +6957,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7154,10 +6995,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7193,10 +7033,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7232,10 +7071,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7271,10 +7109,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7310,10 +7147,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7349,10 +7185,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7388,10 +7223,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7427,10 +7261,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7466,10 +7299,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7505,10 +7337,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7544,10 +7375,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7583,10 +7413,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7622,10 +7451,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7661,10 +7489,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7700,10 +7527,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7739,10 +7565,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7778,10 +7603,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7817,10 +7641,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7856,10 +7679,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7895,10 +7717,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7934,10 +7755,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -7973,10 +7793,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8012,10 +7831,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8051,10 +7869,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8090,10 +7907,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8129,10 +7945,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8168,10 +7983,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8207,10 +8021,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8246,10 +8059,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8285,10 +8097,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8324,10 +8135,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8363,10 +8173,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8402,10 +8211,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8441,10 +8249,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8480,10 +8287,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8519,10 +8325,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8558,10 +8363,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8597,10 +8401,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8636,10 +8439,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8675,10 +8477,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8714,10 +8515,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8753,10 +8553,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8792,10 +8591,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8831,10 +8629,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8870,10 +8667,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8909,10 +8705,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8948,10 +8743,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -8987,10 +8781,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9026,10 +8819,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9065,10 +8857,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9104,10 +8895,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9143,10 +8933,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9182,10 +8971,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9221,10 +9009,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9260,10 +9047,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9299,10 +9085,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9338,10 +9123,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9377,10 +9161,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9416,10 +9199,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9455,10 +9237,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9494,10 +9275,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9533,10 +9313,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9572,10 +9351,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9611,10 +9389,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9650,10 +9427,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9689,10 +9465,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9728,10 +9503,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9767,10 +9541,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9806,10 +9579,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9845,10 +9617,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9884,10 +9655,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9923,10 +9693,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -9962,10 +9731,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10001,10 +9769,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10040,10 +9807,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10079,10 +9845,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10118,10 +9883,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10157,10 +9921,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10196,10 +9959,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10235,10 +9997,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10274,10 +10035,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10313,10 +10073,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10352,10 +10111,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10391,10 +10149,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10430,10 +10187,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10469,10 +10225,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10508,10 +10263,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10547,10 +10301,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10586,10 +10339,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10625,10 +10377,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10664,10 +10415,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10703,10 +10453,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10742,10 +10491,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10781,10 +10529,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10820,10 +10567,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10859,10 +10605,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10898,10 +10643,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10937,10 +10681,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -10976,10 +10719,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11015,10 +10757,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11054,10 +10795,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11093,10 +10833,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11132,10 +10871,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11171,10 +10909,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11210,10 +10947,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11249,10 +10985,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11288,10 +11023,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11327,10 +11061,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11366,10 +11099,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11405,10 +11137,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11444,10 +11175,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11483,10 +11213,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11522,10 +11251,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11561,10 +11289,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11600,10 +11327,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11639,10 +11365,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11678,10 +11403,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11717,10 +11441,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11756,10 +11479,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11795,10 +11517,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11834,10 +11555,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11873,10 +11593,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11912,10 +11631,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11951,10 +11669,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -11990,10 +11707,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12029,10 +11745,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12068,10 +11783,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12107,10 +11821,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12146,10 +11859,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12185,10 +11897,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12224,10 +11935,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12263,10 +11973,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12302,10 +12011,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12341,10 +12049,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12380,10 +12087,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12419,10 +12125,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12458,10 +12163,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12497,10 +12201,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12536,10 +12239,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12575,10 +12277,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12614,10 +12315,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12653,10 +12353,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12692,10 +12391,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12731,10 +12429,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12770,10 +12467,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12809,10 +12505,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12848,10 +12543,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12887,10 +12581,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12926,10 +12619,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -12965,10 +12657,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13004,10 +12695,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13043,10 +12733,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13082,10 +12771,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13121,10 +12809,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13160,10 +12847,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13199,10 +12885,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13238,10 +12923,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13277,10 +12961,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13316,10 +12999,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13355,10 +13037,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13394,10 +13075,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13433,10 +13113,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13472,10 +13151,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13511,10 +13189,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13550,10 +13227,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13589,10 +13265,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13628,10 +13303,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13667,10 +13341,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13706,10 +13379,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13745,10 +13417,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13784,10 +13455,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13823,10 +13493,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13862,10 +13531,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13901,10 +13569,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13940,10 +13607,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -13979,10 +13645,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14018,10 +13683,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14057,10 +13721,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14096,10 +13759,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14135,10 +13797,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14174,10 +13835,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14213,10 +13873,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14252,10 +13911,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14291,10 +13949,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14330,10 +13987,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14369,10 +14025,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14408,10 +14063,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14447,10 +14101,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14486,10 +14139,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14525,10 +14177,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14564,10 +14215,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14603,10 +14253,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14642,10 +14291,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14681,10 +14329,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14720,10 +14367,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14759,10 +14405,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14798,10 +14443,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14837,10 +14481,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14876,10 +14519,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14915,10 +14557,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14954,10 +14595,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -14993,10 +14633,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15032,10 +14671,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15071,10 +14709,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15110,10 +14747,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15149,10 +14785,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15188,10 +14823,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15227,10 +14861,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15266,10 +14899,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15305,10 +14937,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15344,10 +14975,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15383,10 +15013,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15422,10 +15051,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15461,10 +15089,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15500,10 +15127,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15539,10 +15165,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15578,10 +15203,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15617,10 +15241,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15656,10 +15279,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15695,10 +15317,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15734,10 +15355,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15773,10 +15393,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15812,10 +15431,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15851,10 +15469,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15890,10 +15507,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15929,10 +15545,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -15968,10 +15583,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16007,10 +15621,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16046,10 +15659,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16085,10 +15697,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16124,10 +15735,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16163,10 +15773,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16202,10 +15811,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16241,10 +15849,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16280,10 +15887,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16319,10 +15925,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16358,10 +15963,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16397,10 +16001,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16436,10 +16039,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16475,10 +16077,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16514,10 +16115,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16553,10 +16153,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16592,10 +16191,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16631,10 +16229,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16670,10 +16267,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16709,10 +16305,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16748,10 +16343,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16787,10 +16381,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16826,10 +16419,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16865,10 +16457,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16904,10 +16495,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16943,10 +16533,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -16982,10 +16571,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17021,10 +16609,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17060,10 +16647,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17099,10 +16685,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17138,10 +16723,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17177,10 +16761,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17216,10 +16799,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17255,10 +16837,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17294,10 +16875,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17333,10 +16913,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17372,10 +16951,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17411,10 +16989,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17450,10 +17027,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17489,10 +17065,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17528,10 +17103,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17567,10 +17141,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17606,10 +17179,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17645,10 +17217,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17684,10 +17255,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17723,10 +17293,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17762,10 +17331,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17801,10 +17369,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17840,10 +17407,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17879,10 +17445,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17918,10 +17483,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17957,10 +17521,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -17996,10 +17559,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18035,10 +17597,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18074,10 +17635,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18113,10 +17673,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18152,10 +17711,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18191,10 +17749,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18230,10 +17787,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18269,10 +17825,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18308,10 +17863,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18347,10 +17901,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18386,10 +17939,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18425,10 +17977,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18464,10 +18015,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18503,10 +18053,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18542,10 +18091,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18581,10 +18129,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18620,10 +18167,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18659,10 +18205,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18698,10 +18243,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18737,10 +18281,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18776,10 +18319,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18815,10 +18357,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18854,10 +18395,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18893,10 +18433,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18932,10 +18471,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -18971,10 +18509,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19010,10 +18547,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19049,10 +18585,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19088,10 +18623,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19127,10 +18661,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19166,10 +18699,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19205,10 +18737,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19244,10 +18775,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19283,10 +18813,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19322,10 +18851,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19361,10 +18889,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19400,10 +18927,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19439,10 +18965,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19478,10 +19003,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19517,10 +19041,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19556,10 +19079,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19595,10 +19117,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19634,10 +19155,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19673,10 +19193,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19712,10 +19231,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19751,10 +19269,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19790,10 +19307,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19829,10 +19345,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19868,10 +19383,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19907,10 +19421,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19946,10 +19459,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -19985,10 +19497,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20024,10 +19535,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20063,10 +19573,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20102,10 +19611,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20141,10 +19649,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20180,10 +19687,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20219,10 +19725,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20258,10 +19763,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20297,10 +19801,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20336,10 +19839,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20375,10 +19877,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20414,10 +19915,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20453,10 +19953,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20492,10 +19991,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20531,10 +20029,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20570,10 +20067,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20609,10 +20105,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20648,10 +20143,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20687,10 +20181,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20726,10 +20219,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20765,10 +20257,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20804,10 +20295,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20843,10 +20333,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20882,10 +20371,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20921,10 +20409,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20960,10 +20447,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -20999,10 +20485,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21038,10 +20523,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21077,10 +20561,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21116,10 +20599,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21155,10 +20637,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21194,10 +20675,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21233,10 +20713,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21272,10 +20751,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21311,10 +20789,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21350,10 +20827,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21389,10 +20865,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21428,10 +20903,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21467,10 +20941,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21506,10 +20979,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21545,10 +21017,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21584,10 +21055,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21623,10 +21093,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21662,10 +21131,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21701,10 +21169,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21740,10 +21207,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21779,10 +21245,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21818,10 +21283,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21857,10 +21321,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21896,10 +21359,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21935,10 +21397,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -21974,10 +21435,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22013,10 +21473,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22052,10 +21511,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22091,10 +21549,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22130,10 +21587,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22169,10 +21625,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22208,10 +21663,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22247,10 +21701,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22286,10 +21739,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22325,10 +21777,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22364,10 +21815,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22403,10 +21853,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22442,10 +21891,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22481,10 +21929,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22520,10 +21967,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22559,10 +22005,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22598,10 +22043,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22637,10 +22081,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22676,10 +22119,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22715,10 +22157,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22754,10 +22195,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22793,10 +22233,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22832,10 +22271,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22871,10 +22309,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22910,10 +22347,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22949,10 +22385,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -22988,10 +22423,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23027,10 +22461,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23066,10 +22499,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23105,10 +22537,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23144,10 +22575,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23183,10 +22613,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23222,10 +22651,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23261,10 +22689,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23300,10 +22727,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23339,10 +22765,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23378,10 +22803,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23417,10 +22841,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23456,10 +22879,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23495,10 +22917,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23534,10 +22955,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23573,10 +22993,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23612,10 +23031,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23651,10 +23069,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23690,10 +23107,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23729,10 +23145,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23768,10 +23183,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23807,10 +23221,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23846,10 +23259,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23885,10 +23297,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23924,10 +23335,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -23963,10 +23373,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24002,10 +23411,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24041,10 +23449,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24080,10 +23487,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24119,10 +23525,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24158,10 +23563,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24197,10 +23601,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24236,10 +23639,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24275,10 +23677,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24314,10 +23715,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24353,10 +23753,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24392,10 +23791,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24431,10 +23829,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24470,10 +23867,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24509,10 +23905,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24548,10 +23943,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24587,10 +23981,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24626,10 +24019,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24665,10 +24057,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24704,10 +24095,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24743,10 +24133,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24782,10 +24171,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24821,10 +24209,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24860,10 +24247,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24899,10 +24285,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24938,10 +24323,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -24977,10 +24361,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25016,10 +24399,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25055,10 +24437,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25094,10 +24475,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25133,10 +24513,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25172,10 +24551,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25211,10 +24589,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25250,10 +24627,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25289,10 +24665,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25328,10 +24703,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25367,10 +24741,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25406,10 +24779,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25445,10 +24817,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25484,10 +24855,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25523,10 +24893,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25562,10 +24931,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25601,10 +24969,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25640,10 +25007,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25679,10 +25045,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25718,10 +25083,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25757,10 +25121,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25796,10 +25159,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25835,10 +25197,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25874,10 +25235,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25913,10 +25273,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25952,10 +25311,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -25991,10 +25349,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26030,10 +25387,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26069,10 +25425,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26108,10 +25463,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26147,10 +25501,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26186,10 +25539,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26225,10 +25577,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26264,10 +25615,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26303,10 +25653,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26342,10 +25691,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26381,10 +25729,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26420,10 +25767,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26459,10 +25805,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26498,10 +25843,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26537,10 +25881,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26576,10 +25919,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26615,10 +25957,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26654,10 +25995,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26693,10 +26033,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26732,10 +26071,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26771,10 +26109,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26810,10 +26147,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26849,10 +26185,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26888,10 +26223,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26927,10 +26261,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -26966,10 +26299,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27005,10 +26337,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27044,10 +26375,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27083,10 +26413,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27122,10 +26451,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27161,10 +26489,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27200,10 +26527,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27239,10 +26565,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27278,10 +26603,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27317,10 +26641,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27356,10 +26679,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27395,10 +26717,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27434,10 +26755,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27473,10 +26793,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27512,10 +26831,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27551,10 +26869,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27590,10 +26907,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27629,10 +26945,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27668,10 +26983,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27707,10 +27021,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27746,10 +27059,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27785,10 +27097,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27824,10 +27135,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27863,10 +27173,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27902,10 +27211,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27941,10 +27249,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -27980,10 +27287,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28019,10 +27325,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28058,10 +27363,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28097,10 +27401,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28136,10 +27439,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28175,10 +27477,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28214,10 +27515,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28253,10 +27553,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28292,10 +27591,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28331,10 +27629,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28370,10 +27667,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28409,10 +27705,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28448,10 +27743,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28487,10 +27781,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28526,10 +27819,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28565,10 +27857,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28604,10 +27895,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28643,10 +27933,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28682,10 +27971,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28721,10 +28009,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28760,10 +28047,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28799,10 +28085,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28838,10 +28123,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28877,10 +28161,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28916,10 +28199,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28955,10 +28237,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -28994,10 +28275,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29033,10 +28313,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29072,10 +28351,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29111,10 +28389,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29150,10 +28427,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29189,10 +28465,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29228,10 +28503,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29267,10 +28541,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29306,10 +28579,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29345,10 +28617,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29384,10 +28655,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29423,10 +28693,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29462,10 +28731,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29501,10 +28769,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29540,10 +28807,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29579,10 +28845,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29618,10 +28883,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29657,10 +28921,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29696,10 +28959,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29735,10 +28997,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29774,10 +29035,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29813,10 +29073,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29852,10 +29111,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
@@ -29891,10 +29149,9 @@ def fetch_layovers():
             "30A"
         ],
         "accommodations": [
-            "Stalls",
-            "Corrals",
-            "Trails"
-        ],
+                "Stalls",
+                "Corrals"
+            ],
         "maxRigLength": 60,
         "stallCount": 0,
         "paddockCount": 0,
