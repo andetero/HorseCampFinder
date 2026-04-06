@@ -117,17 +117,22 @@
   }
 
   const search = window.location.search;
+  alert('search: ' + search.substring(0, 150));
   const match = search.match(/[?&]d=([^&]*)/);
   if (match) {
     const rawD = match[1];
+    alert('rawD first 100: ' + rawD.substring(0, 100));
     const trip = tryParse(rawD);
     if (trip) {
+      alert('parsed ok: ' + trip.name);
       render(trip, rawD);
     } else {
+      alert('parse failed');
       document.getElementById('content').innerHTML =
-        '<div class="no-data"><h2>Could not read trip</h2><p>The link may be invalid. Try sharing the trip again from HorseCamp.</p></div>';
+        '<div class="no-data"><h2>Could not read trip</h2><p>Parse failed. rawD starts with: ' + rawD.substring(0,50) + '</p></div>';
     }
   } else {
+    alert('no match found in: ' + search);
     document.getElementById('content').innerHTML =
       '<div class="no-data"><h2>No trip data</h2><p>Share a trip from the HorseCamp app to generate a link.</p></div>';
   }
