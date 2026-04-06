@@ -369,14 +369,12 @@ def fetch_ridb_state(state):
                 if "50 amp" in blob_lower or "50-amp" in blob_lower: hookups.append("50A")
                 if "30 amp" in blob_lower or "30-amp" in blob_lower: hookups.append("30A")
                 if "water hookup" in blob_lower:                       hookups.append("Water")
-                if "dump station" in blob_lower or "sewer" in blob_lower: hookups.append("Dump Station")
 
                 accommodations = []
                 if "stall"    in blob_lower: accommodations.append("Stalls")
                 if "corral"   in blob_lower: accommodations.append("Corrals")
                 if "highline" in blob_lower or "high line" in blob_lower or "tie rail" in blob_lower:
                     accommodations.append("Highlines")
-                if "wash rack" in blob_lower: accommodations.append("Wash Rack")
                 if "paddock"  in blob_lower: accommodations.append("Paddocks")
                 if "trail" in blob_lower or "hiking" in blob_lower: accommodations.append("Trails")
 
