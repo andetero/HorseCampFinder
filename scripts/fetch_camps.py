@@ -266,6 +266,44 @@ def parse_paddock_count(facility):
                 pass
     return 0
 
+def parse_ridb_fee(facility):
+    """Extract nightly fee from RIDB facility data.
+    Checks FACILITYFEE first, then falls back to CAMPSITE fees.
+    Returns 0.0 if no fee data found (app shows 'See site for pricing')."""
+    # Try facility-level fee first
+    for fee in (facility.get("FACILITYFEE") or []):
+        fee_type = (fee.get("FeeType") or "").lower()
+        if "overnight" in fee_type or "nightly" in fee_type or "camping" in fee_type or fee_type == "":
+            try:
+                amount = float(fee.get("FeeAmount") or 0)
+                if amount > 0:
+                    return amount
+            except:
+                pass
+
+    # Fall back to campsite-level fees
+    campsites = facility.get("CAMPSITE") or []
+    fees_found = []
+    for site in campsites:
+        for fee in (site.get("CAMPSITE_FEE") or []):
+            fee_type = (fee.get("FeeType") or "").lower()
+            # Skip reservation/one-time fees, only want nightly/use fees
+            if "reservation" in fee_type or "cancellation" in fee_type:
+                continue
+            try:
+                amount = float(fee.get("FeeAmount") or 0)
+                if amount > 0:
+                    fees_found.append(amount)
+            except:
+                pass
+
+    # Return the median fee if multiple campsites to avoid outliers
+    if fees_found:
+        fees_found.sort()
+        return fees_found[len(fees_found) // 2]
+
+    return 0.0
+
 # ── RIDB ───────────────────────────────────────────────────────────────
 def fetch_ridb_state(state):
     camps = {}
@@ -351,7 +389,7 @@ def fetch_ridb_state(state):
                     "state":               fstate,
                     "latitude":            lat,
                     "longitude":           lng,
-                    "pricePerNight":       0.0,
+                    "pricePerNight":       parse_ridb_fee(f),
                     "horseFeePerNight":    0.0,
                     "hookups":             list(dict.fromkeys(hookups)),
                     "accommodations":      list(dict.fromkeys(accommodations)),
@@ -429,9 +467,10 @@ def fetch_nps_state(state):
         if amenities.get("electricalHookups") == "Yes": hookups.append("30A")
         if not hookups: hookups.append("No Hookups")
 
-        accommodations = ["Trails"]
+        accommodations = []
         if amenities.get("corralOrPaddockOnsite") == "Yes": accommodations.append("Corrals")
         if amenities.get("stableNearby") == "Yes":          accommodations.append("Stalls")
+        if amenities.get("horseTrailsOnsite") == "Yes":     accommodations.append("Trails")
 
         contacts = c.get("contacts", {})
         phones   = contacts.get("phoneNumbers", [])
@@ -448,9 +487,9 @@ def fetch_nps_state(state):
             "horseFeePerNight":    0.0,
             "hookups":             hookups,
             "accommodations":      list(dict.fromkeys(accommodations)),
-            "maxRigLength":        55,
-            "stallCount":          6 if amenities.get("stableNearby") == "Yes" else 0,
-            "paddockCount":        4 if amenities.get("corralOrPaddockOnsite") == "Yes" else 0,
+            "maxRigLength":        0,
+            "stallCount":          0,
+            "paddockCount":        0,
             "phone":               phone,
             "website":             c.get("url", f"https://www.nps.gov/{c.get('parkCode', '')}/"),
             "description":         desc[:2000],
@@ -601,10 +640,14 @@ out center;
         if not hookups:
             hookups = ["No Hookups"]
 
-        # Build accommodations
-        accommodations = ["Trails"]
-        if tags.get("horse") == "yes":
-            accommodations.insert(0, "Corrals")
+        # Build accommodations from actual OSM tags
+        accommodations = []
+        if tags.get("horse_stables") == "yes" or tags.get("stables") == "yes":
+            accommodations.append("Stalls")
+        if tags.get("horse_riding") == "yes" or tags.get("paddock") == "yes":
+            accommodations.append("Corrals")
+        if tags.get("horse_trail") == "yes" or tags.get("hiking") == "yes":
+            accommodations.append("Trails")
 
         eid = f"osm-{element['id']}"
         camps[eid] = {
@@ -618,7 +661,7 @@ out center;
             "horseFeePerNight":    0.0,
             "hookups":             hookups,
             "accommodations":      list(dict.fromkeys(accommodations)),
-            "maxRigLength":        55,
+            "maxRigLength":        0,
             "stallCount":          0,
             "paddockCount":        0,
             "phone":               phone,
@@ -659,7 +702,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -697,7 +740,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -735,7 +778,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -773,7 +816,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -811,7 +854,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -849,7 +892,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -887,7 +930,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -925,7 +968,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -963,7 +1006,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1001,7 +1044,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1039,7 +1082,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1077,7 +1120,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1115,7 +1158,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1153,7 +1196,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1191,7 +1234,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1229,7 +1272,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1267,7 +1310,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1305,7 +1348,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1343,7 +1386,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1381,7 +1424,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1419,7 +1462,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1457,7 +1500,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1495,7 +1538,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1533,7 +1576,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1571,7 +1614,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1609,7 +1652,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1647,7 +1690,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1685,7 +1728,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1723,7 +1766,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1761,7 +1804,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1799,7 +1842,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1837,7 +1880,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1875,7 +1918,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1913,7 +1956,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1951,7 +1994,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -1989,7 +2032,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2027,7 +2070,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2065,7 +2108,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2103,7 +2146,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2141,7 +2184,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2179,7 +2222,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2217,7 +2260,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2255,7 +2298,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2293,7 +2336,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2331,7 +2374,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2369,7 +2412,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2407,7 +2450,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2445,7 +2488,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2483,7 +2526,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2521,7 +2564,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2559,7 +2602,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2597,7 +2640,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2635,7 +2678,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2673,7 +2716,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2711,7 +2754,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2749,7 +2792,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2787,7 +2830,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2825,7 +2868,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2863,7 +2906,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2901,7 +2944,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2939,7 +2982,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -2977,7 +3020,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3015,7 +3058,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3053,7 +3096,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3091,7 +3134,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3129,7 +3172,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3167,7 +3210,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3205,7 +3248,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3243,7 +3286,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3281,7 +3324,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3319,7 +3362,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3357,7 +3400,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3395,7 +3438,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3433,7 +3476,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3471,7 +3514,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3509,7 +3552,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3547,7 +3590,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3585,7 +3628,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3623,7 +3666,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3661,7 +3704,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3699,7 +3742,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3737,7 +3780,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3775,7 +3818,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3813,7 +3856,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3851,7 +3894,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3889,7 +3932,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3927,7 +3970,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -3965,7 +4008,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4003,7 +4046,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4041,7 +4084,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4079,7 +4122,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4117,7 +4160,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4155,7 +4198,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4193,7 +4236,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4231,7 +4274,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4269,7 +4312,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4307,7 +4350,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4345,7 +4388,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4383,7 +4426,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4421,7 +4464,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4459,7 +4502,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4497,7 +4540,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4535,7 +4578,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4573,7 +4616,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4611,7 +4654,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4649,7 +4692,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4687,7 +4730,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4725,7 +4768,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4763,7 +4806,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4801,7 +4844,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4839,7 +4882,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4877,7 +4920,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4915,7 +4958,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4953,7 +4996,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -4991,7 +5034,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5029,7 +5072,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5067,7 +5110,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5105,7 +5148,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5143,7 +5186,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5181,7 +5224,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5219,7 +5262,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5257,7 +5300,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5295,7 +5338,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5333,7 +5376,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5371,7 +5414,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5409,7 +5452,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5447,7 +5490,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5485,7 +5528,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5523,7 +5566,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5561,7 +5604,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5599,7 +5642,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5637,7 +5680,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5675,7 +5718,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5713,7 +5756,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5751,7 +5794,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5789,7 +5832,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5827,7 +5870,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5865,7 +5908,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5903,7 +5946,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5941,7 +5984,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -5979,7 +6022,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6017,7 +6060,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6055,7 +6098,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6093,7 +6136,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6131,7 +6174,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6169,7 +6212,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6207,7 +6250,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6245,7 +6288,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6283,7 +6326,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6321,7 +6364,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6359,7 +6402,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6397,7 +6440,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6435,7 +6478,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6473,7 +6516,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6511,7 +6554,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6549,7 +6592,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6587,7 +6630,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6625,7 +6668,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6663,7 +6706,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6701,7 +6744,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6739,7 +6782,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6777,7 +6820,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6815,7 +6858,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6853,7 +6896,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6891,7 +6934,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6929,7 +6972,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -6967,7 +7010,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7005,7 +7048,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7043,7 +7086,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7081,7 +7124,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7119,7 +7162,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7157,7 +7200,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7195,7 +7238,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7233,7 +7276,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7271,7 +7314,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7309,7 +7352,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7347,7 +7390,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7385,7 +7428,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7423,7 +7466,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7461,7 +7504,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7499,7 +7542,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7537,7 +7580,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7575,7 +7618,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7613,7 +7656,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7651,7 +7694,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7689,7 +7732,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7727,7 +7770,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7765,7 +7808,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7803,7 +7846,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7841,7 +7884,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7879,7 +7922,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7917,7 +7960,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7955,7 +7998,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -7993,7 +8036,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8031,7 +8074,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8069,7 +8112,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8107,7 +8150,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8145,7 +8188,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8183,7 +8226,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8221,7 +8264,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8259,7 +8302,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8297,7 +8340,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8335,7 +8378,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8373,7 +8416,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8411,7 +8454,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8449,7 +8492,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8487,7 +8530,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8525,7 +8568,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8563,7 +8606,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8601,7 +8644,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8639,7 +8682,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8677,7 +8720,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8715,7 +8758,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8753,7 +8796,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8791,7 +8834,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8829,7 +8872,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8867,7 +8910,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8905,7 +8948,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8943,7 +8986,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -8981,7 +9024,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9019,7 +9062,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9057,7 +9100,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9095,7 +9138,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9133,7 +9176,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9171,7 +9214,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9209,7 +9252,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9247,7 +9290,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9285,7 +9328,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9323,7 +9366,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9361,7 +9404,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9399,7 +9442,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9437,7 +9480,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9475,7 +9518,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9513,7 +9556,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9551,7 +9594,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9589,7 +9632,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9627,7 +9670,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9665,7 +9708,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9703,7 +9746,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9741,7 +9784,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9779,7 +9822,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9817,7 +9860,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9855,7 +9898,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9893,7 +9936,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9931,7 +9974,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -9969,7 +10012,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10007,7 +10050,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10045,7 +10088,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10083,7 +10126,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10121,7 +10164,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10159,7 +10202,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10197,7 +10240,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10235,7 +10278,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10273,7 +10316,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10311,7 +10354,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10349,7 +10392,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10387,7 +10430,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10425,7 +10468,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10463,7 +10506,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10501,7 +10544,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10539,7 +10582,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10577,7 +10620,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10615,7 +10658,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10653,7 +10696,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10691,7 +10734,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10729,7 +10772,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10767,7 +10810,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10805,7 +10848,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10843,7 +10886,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10881,7 +10924,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10919,7 +10962,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10957,7 +11000,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -10995,7 +11038,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11033,7 +11076,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11071,7 +11114,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11109,7 +11152,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11147,7 +11190,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11185,7 +11228,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11223,7 +11266,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11261,7 +11304,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11299,7 +11342,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11337,7 +11380,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11375,7 +11418,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11413,7 +11456,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11451,7 +11494,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11489,7 +11532,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11527,7 +11570,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11565,7 +11608,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11603,7 +11646,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11641,7 +11684,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11679,7 +11722,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11717,7 +11760,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11755,7 +11798,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11793,7 +11836,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11831,7 +11874,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11869,7 +11912,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11907,7 +11950,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11945,7 +11988,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -11983,7 +12026,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12021,7 +12064,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12059,7 +12102,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12097,7 +12140,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12135,7 +12178,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12173,7 +12216,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12211,7 +12254,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12249,7 +12292,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12287,7 +12330,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12325,7 +12368,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12363,7 +12406,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12401,7 +12444,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12439,7 +12482,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12477,7 +12520,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12515,7 +12558,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12553,7 +12596,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12591,7 +12634,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12629,7 +12672,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12667,7 +12710,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12705,7 +12748,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12743,7 +12786,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12781,7 +12824,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12819,7 +12862,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12857,7 +12900,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12895,7 +12938,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12933,7 +12976,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -12971,7 +13014,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13009,7 +13052,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13047,7 +13090,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13085,7 +13128,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13123,7 +13166,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13161,7 +13204,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13199,7 +13242,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13237,7 +13280,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13275,7 +13318,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13313,7 +13356,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13351,7 +13394,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13389,7 +13432,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13427,7 +13470,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13465,7 +13508,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13503,7 +13546,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13541,7 +13584,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13579,7 +13622,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13617,7 +13660,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13655,7 +13698,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13693,7 +13736,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13731,7 +13774,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13769,7 +13812,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13807,7 +13850,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13845,7 +13888,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13883,7 +13926,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13921,7 +13964,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13959,7 +14002,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -13997,7 +14040,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14035,7 +14078,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14073,7 +14116,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14111,7 +14154,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14149,7 +14192,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14187,7 +14230,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14225,7 +14268,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14263,7 +14306,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14301,7 +14344,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14339,7 +14382,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14377,7 +14420,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14415,7 +14458,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14453,7 +14496,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14491,7 +14534,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14529,7 +14572,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14567,7 +14610,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14605,7 +14648,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14643,7 +14686,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14681,7 +14724,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14719,7 +14762,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14757,7 +14800,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14795,7 +14838,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14833,7 +14876,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14871,7 +14914,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14909,7 +14952,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14947,7 +14990,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -14985,7 +15028,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15023,7 +15066,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15061,7 +15104,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15099,7 +15142,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15137,7 +15180,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15175,7 +15218,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15213,7 +15256,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15251,7 +15294,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15289,7 +15332,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15327,7 +15370,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15365,7 +15408,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15403,7 +15446,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15441,7 +15484,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15479,7 +15522,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15517,7 +15560,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15555,7 +15598,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15593,7 +15636,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15631,7 +15674,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15669,7 +15712,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15707,7 +15750,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15745,7 +15788,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15783,7 +15826,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15821,7 +15864,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15859,7 +15902,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15897,7 +15940,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15935,7 +15978,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -15973,7 +16016,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16011,7 +16054,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16049,7 +16092,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16087,7 +16130,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16125,7 +16168,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16163,7 +16206,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16201,7 +16244,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16239,7 +16282,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16277,7 +16320,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16315,7 +16358,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16353,7 +16396,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16391,7 +16434,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16429,7 +16472,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16467,7 +16510,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16505,7 +16548,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16543,7 +16586,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16581,7 +16624,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16619,7 +16662,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16657,7 +16700,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16695,7 +16738,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16733,7 +16776,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16771,7 +16814,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16809,7 +16852,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16847,7 +16890,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16885,7 +16928,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16923,7 +16966,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16961,7 +17004,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -16999,7 +17042,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17037,7 +17080,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17075,7 +17118,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17113,7 +17156,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17151,7 +17194,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17189,7 +17232,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17227,7 +17270,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17265,7 +17308,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17303,7 +17346,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17341,7 +17384,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17379,7 +17422,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17417,7 +17460,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17455,7 +17498,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17493,7 +17536,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17531,7 +17574,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17569,7 +17612,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17607,7 +17650,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17645,7 +17688,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17683,7 +17726,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17721,7 +17764,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17759,7 +17802,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17797,7 +17840,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17835,7 +17878,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17873,7 +17916,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17911,7 +17954,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17949,7 +17992,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -17987,7 +18030,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18025,7 +18068,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18063,7 +18106,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18101,7 +18144,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18139,7 +18182,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18177,7 +18220,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18215,7 +18258,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18253,7 +18296,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18291,7 +18334,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18329,7 +18372,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18367,7 +18410,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18405,7 +18448,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18443,7 +18486,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18481,7 +18524,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18519,7 +18562,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18557,7 +18600,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18595,7 +18638,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18633,7 +18676,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18671,7 +18714,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18709,7 +18752,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18747,7 +18790,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18785,7 +18828,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18823,7 +18866,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18861,7 +18904,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18899,7 +18942,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18937,7 +18980,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -18975,7 +19018,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19013,7 +19056,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19051,7 +19094,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19089,7 +19132,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19127,7 +19170,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19165,7 +19208,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19203,7 +19246,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19241,7 +19284,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19279,7 +19322,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19317,7 +19360,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19355,7 +19398,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19393,7 +19436,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19431,7 +19474,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19469,7 +19512,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19507,7 +19550,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19545,7 +19588,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19583,7 +19626,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19621,7 +19664,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19659,7 +19702,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19697,7 +19740,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19735,7 +19778,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19773,7 +19816,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19811,7 +19854,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19849,7 +19892,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19887,7 +19930,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19925,7 +19968,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -19963,7 +20006,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20001,7 +20044,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20039,7 +20082,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20077,7 +20120,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20115,7 +20158,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20153,7 +20196,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20191,7 +20234,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20229,7 +20272,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20267,7 +20310,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20305,7 +20348,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20343,7 +20386,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20381,7 +20424,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20419,7 +20462,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20457,7 +20500,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20495,7 +20538,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20533,7 +20576,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20571,7 +20614,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20609,7 +20652,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20647,7 +20690,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20685,7 +20728,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20723,7 +20766,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20761,7 +20804,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20799,7 +20842,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20837,7 +20880,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20875,7 +20918,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20913,7 +20956,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20951,7 +20994,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -20989,7 +21032,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21027,7 +21070,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21065,7 +21108,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21103,7 +21146,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21141,7 +21184,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21179,7 +21222,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21217,7 +21260,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21255,7 +21298,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21293,7 +21336,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21331,7 +21374,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21369,7 +21412,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21407,7 +21450,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21445,7 +21488,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21483,7 +21526,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21521,7 +21564,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21559,7 +21602,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21597,7 +21640,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21635,7 +21678,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21673,7 +21716,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21711,7 +21754,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21749,7 +21792,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21787,7 +21830,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21825,7 +21868,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21863,7 +21906,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21901,7 +21944,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21939,7 +21982,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -21977,7 +22020,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22015,7 +22058,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22053,7 +22096,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22091,7 +22134,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22129,7 +22172,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22167,7 +22210,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22205,7 +22248,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22243,7 +22286,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22281,7 +22324,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22319,7 +22362,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22357,7 +22400,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22395,7 +22438,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22433,7 +22476,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22471,7 +22514,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22509,7 +22552,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22547,7 +22590,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22585,7 +22628,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22623,7 +22666,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22661,7 +22704,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22699,7 +22742,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22737,7 +22780,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22775,7 +22818,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22813,7 +22856,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22851,7 +22894,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22889,7 +22932,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22927,7 +22970,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -22965,7 +23008,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23003,7 +23046,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23041,7 +23084,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23079,7 +23122,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23117,7 +23160,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23155,7 +23198,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23193,7 +23236,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23231,7 +23274,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23269,7 +23312,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23307,7 +23350,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23345,7 +23388,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23383,7 +23426,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23421,7 +23464,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23459,7 +23502,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23497,7 +23540,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23535,7 +23578,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23573,7 +23616,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23611,7 +23654,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23649,7 +23692,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23687,7 +23730,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23725,7 +23768,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23763,7 +23806,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23801,7 +23844,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23839,7 +23882,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23877,7 +23920,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23915,7 +23958,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23953,7 +23996,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -23991,7 +24034,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24029,7 +24072,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24067,7 +24110,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24105,7 +24148,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24143,7 +24186,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24181,7 +24224,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24219,7 +24262,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24257,7 +24300,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24295,7 +24338,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24333,7 +24376,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24371,7 +24414,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24409,7 +24452,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24447,7 +24490,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24485,7 +24528,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24523,7 +24566,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24561,7 +24604,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24599,7 +24642,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24637,7 +24680,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24675,7 +24718,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24713,7 +24756,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24751,7 +24794,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24789,7 +24832,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24827,7 +24870,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24865,7 +24908,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24903,7 +24946,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24941,7 +24984,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -24979,7 +25022,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25017,7 +25060,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25055,7 +25098,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25093,7 +25136,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25131,7 +25174,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25169,7 +25212,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25207,7 +25250,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25245,7 +25288,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25283,7 +25326,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25321,7 +25364,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25359,7 +25402,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25397,7 +25440,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25435,7 +25478,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25473,7 +25516,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25511,7 +25554,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25549,7 +25592,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25587,7 +25630,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25625,7 +25668,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25663,7 +25706,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25701,7 +25744,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25739,7 +25782,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25777,7 +25820,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25815,7 +25858,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25853,7 +25896,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25891,7 +25934,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25929,7 +25972,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -25967,7 +26010,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26005,7 +26048,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26043,7 +26086,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26081,7 +26124,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26119,7 +26162,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26157,7 +26200,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26195,7 +26238,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26233,7 +26276,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26271,7 +26314,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26309,7 +26352,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26347,7 +26390,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26385,7 +26428,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26423,7 +26466,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26461,7 +26504,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26499,7 +26542,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26537,7 +26580,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26575,7 +26618,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26613,7 +26656,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26651,7 +26694,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26689,7 +26732,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26727,7 +26770,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26765,7 +26808,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26803,7 +26846,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26841,7 +26884,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26879,7 +26922,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26917,7 +26960,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26955,7 +26998,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -26993,7 +27036,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27031,7 +27074,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27069,7 +27112,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27107,7 +27150,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27145,7 +27188,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27183,7 +27226,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27221,7 +27264,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27259,7 +27302,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27297,7 +27340,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27335,7 +27378,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27373,7 +27416,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27411,7 +27454,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27449,7 +27492,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27487,7 +27530,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27525,7 +27568,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27563,7 +27606,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27601,7 +27644,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27639,7 +27682,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27677,7 +27720,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27715,7 +27758,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27753,7 +27796,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27791,7 +27834,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27829,7 +27872,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27867,7 +27910,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27905,7 +27948,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27943,7 +27986,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -27981,7 +28024,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28019,7 +28062,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28057,7 +28100,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28095,7 +28138,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28133,7 +28176,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28171,7 +28214,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28209,7 +28252,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28247,7 +28290,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28285,7 +28328,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28323,7 +28366,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28361,7 +28404,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28399,7 +28442,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28437,7 +28480,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28475,7 +28518,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28513,7 +28556,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28551,7 +28594,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28589,7 +28632,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28627,7 +28670,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28665,7 +28708,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28703,7 +28746,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28741,7 +28784,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28779,7 +28822,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28817,7 +28860,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28855,7 +28898,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28893,7 +28936,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28931,7 +28974,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -28969,7 +29012,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -29007,7 +29050,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -29045,7 +29088,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -29083,7 +29126,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -29121,7 +29164,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
@@ -29159,7 +29202,7 @@ def fetch_layovers():
         "pricePerNight": 0.0,
         "horseFeePerNight": 0.0,
         "hookups": [
-            "30A"
+            "No Hookups"
         ],
         "accommodations": [
                 "Stalls",
