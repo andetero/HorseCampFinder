@@ -341,7 +341,7 @@ def fetch_ridb_state(state):
                     accommodations.append("Highlines")
                 if "wash rack" in blob_lower: accommodations.append("Wash Rack")
                 if "paddock"  in blob_lower: accommodations.append("Paddocks")
-                accommodations.append("Trails")
+                if "trail" in blob_lower or "hiking" in blob_lower: accommodations.append("Trails")
 
                 season_start, season_end = parse_season(f)
                 camps[fid] = {
