@@ -63,10 +63,21 @@
   }
 
   function tryParse(str) {
-    // Try raw first, then decoded
     try { return JSON.parse(str); } catch(e) {}
     try { return JSON.parse(decodeURIComponent(str)); } catch(e) {}
     return null;
+  }
+
+  function openInApp(rawD) {
+    // iframe trick — most reliable way to open custom URL schemes in mobile Safari
+    // without triggering "invalid address" error
+    var iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = 'horsecamp://trip?d=' + rawD;
+    document.body.appendChild(iframe);
+    setTimeout(function() {
+      document.body.removeChild(iframe);
+    }, 500);
   }
 
   function render(trip, rawD) {
@@ -93,12 +104,15 @@
         '<div class="meta-item"><span class="meta-label">Stops</span><span class="meta-value">' + stopCount + ' camp' + (stopCount!==1?'s':'') + '</span></div>' +
       '</div>' +
       stopsHtml +
-      '<button class="open-btn" onclick="window.location=\'horsecamp://trip?d=' + rawD + '\'">📍 Open in HorseCamp</button>' +
-      '<div class="no-app">Don\'t have HorseCamp? <a href="https://apps.apple.com/app/horsecamp">Download on the App Store</a></div>' +
+      '<button class="open-btn" id="open-btn">📍 Open in HorseCamp</button>' +
+      '<div class="no-app">Don't have HorseCamp? <a href="https://apps.apple.com/app/horsecamp">Download on the App Store</a></div>' +
       '</div>';
+
+    document.getElementById('open-btn').addEventListener('click', function() {
+      openInApp(rawD);
+    });
   }
 
-  // Get raw ?d= value from URL — use location.search to avoid any pre-decoding
   const search = window.location.search;
   const match = search.match(/[?&]d=([^&]*)/);
   if (match) {
