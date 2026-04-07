@@ -477,21 +477,9 @@ def fetch_nps_state(state):
         phones   = contacts.get("phoneNumbers", [])
         phone    = phones[0].get("phoneNumber", "") if phones else ""
 
-        # Season — read from operatingHours if available
+        # Season — NPS API doesn't provide reliable open/close months
+        # operatingHours contains daily schedule dates, not seasonal months
         season_start, season_end = 0, 0
-        for oh in (c.get("operatingHours") or []):
-            for period in (oh.get("exceptions") or []):
-                pass  # skip exceptions
-            # Standard hours have startDate/endDate
-            start_str = oh.get("startDate", "") or ""
-            end_str   = oh.get("endDate",   "") or ""
-            try:
-                if "-" in start_str: season_start = int(start_str.split("-")[1])
-                if "-" in end_str:   season_end   = int(end_str.split("-")[1])
-                if season_start > 0 and season_end > 0:
-                    break
-            except:
-                pass
 
         camps.append({
             "id":                  f"nps-{c['id']}",
