@@ -431,10 +431,6 @@ def fetch_nps_state(state):
         if not is_equestrian(blob):
             continue
 
-        # TEMPORARY DEBUG — remove after one run
-        print("NPS_AMENITIES_DEBUG:", amenities)
-        # END DEBUG
-
         try:
             lat = float(c.get("latitude", 0))
             lng = float(c.get("longitude", 0))
@@ -451,17 +447,23 @@ def fetch_nps_state(state):
             try: fee = float(fees[0].get("cost", 0))
             except: pass
 
-        # Hookups — read all three hookup types NPS provides
+        # Hookups — NPS values are "Yes - seasonal", "Yes - year round", or "No"
+        def nps_yes(val): return str(val or "").startswith("Yes")
         hookups = []
-        if amenities.get("electricalHookups") == "Yes": hookups.append("30A")
-        if amenities.get("waterHookups")      == "Yes": hookups.append("Water")
-        if amenities.get("sewerHookups")      == "Yes": hookups.append("Sewer")
+        if nps_yes(amenities.get("electricalHookups")): hookups.append("30A")
+        if nps_yes(amenities.get("waterHookups")):      hookups.append("Water")
+        if nps_yes(amenities.get("sewerHookups")):      hookups.append("Sewer")
+        # potableWater — only add if starts with "Yes" (not "No water" or "Water, but not potable")
+        potable = " ".join(amenities.get("potableWater") or [])
+        if potable.startswith("Yes"):                   hookups.append("Water")
+        # Deduplicate in case both waterHookups and potableWater say yes
+        hookups = list(dict.fromkeys(hookups))
         if not hookups: hookups.append("No Hookups")
 
         accommodations = []
-        if amenities.get("corralOrPaddockOnsite") == "Yes": accommodations.append("Corrals")
-        if amenities.get("stableNearby") == "Yes":          accommodations.append("Stalls")
-        if amenities.get("horseTrailsOnsite") == "Yes":     accommodations.append("Trails")
+        if nps_yes(amenities.get("corralOrPaddockOnsite")): accommodations.append("Corrals")
+        if nps_yes(amenities.get("stableNearby")):          accommodations.append("Stalls")
+        if nps_yes(amenities.get("horseTrailsOnsite")):     accommodations.append("Trails")
 
         contacts = c.get("contacts", {})
         phones   = contacts.get("phoneNumbers", [])
@@ -492,10 +494,10 @@ def fetch_nps_state(state):
             "seasonStart":         season_start,
             "seasonEnd":           season_end,
             "hasWashRack":         False,
-            "hasDumpStation":      amenities.get("dumpStation") == "Yes",
-            "hasWifi":             amenities.get("internetConnectivity") == "Yes",
-            "hasBathhouse":        "shower" in str(amenities.get("showers", "") or "").lower(),
-            "pullThroughAvailable": amenities.get("pullThroughCampsites") == "Yes",
+            "hasDumpStation":      nps_yes(amenities.get("dumpStation")),
+            "hasWifi":             nps_yes(amenities.get("internetConnectivity")),
+            "hasBathhouse":        (any("flush" in t.lower() for t in (amenities.get("toilets") or [])) or any(str(s).strip().lower() not in ("none", "") for s in (amenities.get("showers") or []) if s)),
+            "pullThroughAvailable": nps_yes(amenities.get("pullThroughCampsites")),
             "rating":              0.0,
             "reviewCount":         0,
             "imageColors":         ["4A7FA5", "5C7A4E"],
