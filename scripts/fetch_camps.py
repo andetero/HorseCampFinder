@@ -324,6 +324,12 @@ def fetch_ridb_state(state):
                 if not fid or fid in camps:
                     continue
 
+                # TEMPORARY DEBUG — remove after one run
+                if not hasattr(fetch_ridb_state, '_media_debug_done'):
+                    fetch_ridb_state._media_debug_done = True
+                    print("RIDB_MEDIA_DEBUG:", f.get("MEDIA") or f.get("ENTITYMEDIA") or "no media field")
+                # END DEBUG
+
                 lat = float(f.get("FacilityLatitude", 0) or 0)
                 lng = float(f.get("FacilityLongitude", 0) or 0)
                 if abs(lat) < 0.1 or abs(lng) < 0.1:
