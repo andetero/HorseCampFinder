@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T11:21:52.045275+00:00",
+  "generated": "2026-11-07T10:43:55.717154+00:00",
   "count": 2150,
   "sources": [
     "Recreation.gov RIDB",
@@ -45117,7 +45117,7 @@
       "hasBathhouse": false,
       "pullThroughAvailable": false,
       "imageColors": ["5C7A4E", "D4A853"],
-      "photoURLs": ["https://cdn.recreation.gov/public/2022/09/02/21/46/234174_6a0424ed-c820-41a9-9200-275fd2e577e3_1440.webp", "https://cdn.recreation.gov/public/2020/02/14/21/38/234174_2a8e7ef5-4bdb-4fff-8342-a9660a9535a3_700.webp", "https://cdn.recreation.gov/public/2020/02/15/00/30/234174_1ebcae98-bf0b-4d31-a973-0c08fa6784a5_700.webp", "https://cdn.recreation.gov/public/2023/12/20/22/57/234174_d363f9c0-17fb-48e6-b2d5-e71635b3a27e_700.webp", "https://cdn.recreation.gov/public/2023/12/20/23/03/234174_b66c234d-20fa-44c9-93b1-7889c7470a91_700.webp", "https://cdn.recreation.gov/public/2023/12/20/22/48/234174_f77b3624-cb7a-4622-adee-21fbc5747abd_700.webp"],
+      "photoURLs": ["https://cdn.recreation.gov/public/2022/09/02/21/46/234174_6a0424ed-c820-41a9-9200-275fd2e577e3_1440.webp", "https://cdn.recreation.gov/public/2020/02/14/21/38/234174_2a8e7ef5-4bdb-4fff-8342-a9660a9535a3_700.webp", "https://cdn.recreation.gov/public/2023/12/20/22/57/234174_d363f9c0-17fb-48e6-b2d5-e71635b3a27e_700.webp", "https://cdn.recreation.gov/public/2020/02/15/00/30/234174_1ebcae98-bf0b-4d31-a973-0c08fa6784a5_700.webp", "https://cdn.recreation.gov/public/2023/12/20/23/03/234174_b66c234d-20fa-44c9-93b1-7889c7470a91_700.webp", "https://cdn.recreation.gov/public/2023/12/20/22/48/234174_f77b3624-cb7a-4622-adee-21fbc5747abd_700.webp"],
       "source": "RIDB"
     },
     {
@@ -57103,7 +57103,7 @@
     },
     {
       "id": "horsemotel-ca65693d33",
-      "name": "The Rough Stone Shining, Lacey Yama",
+      "name": "The Cowboy Barn, Lacey Yama",
       "location": "498 W 200 N, Nephi, UT 84648",
       "state": "UT",
       "latitude": 39.7118536,
